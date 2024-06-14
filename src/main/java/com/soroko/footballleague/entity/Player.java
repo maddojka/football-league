@@ -18,4 +18,7 @@ public class Player {
 
     @Column(name = "position", nullable = false)
     private String position;
+
+    @OneToOne
+    private PlayerStatistics playerStatistics;
 }

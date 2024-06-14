@@ -26,4 +26,7 @@ public class PlayerStatistics {
 
     @Column(name = "submissions")
     private int submissions;
+
+    @OneToOne
+    private Player player;
 }
