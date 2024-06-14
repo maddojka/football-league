@@ -14,7 +14,7 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    public List<Team> getAllTeams() {
+    public Iterable<Team> getAllTeams() {
         return teamRepository.findAll();
     }
 }

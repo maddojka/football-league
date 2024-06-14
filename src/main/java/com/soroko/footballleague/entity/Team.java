@@ -1,6 +1,7 @@
 package com.soroko.footballleague.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,11 +19,8 @@ public class Team {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "place", length = 2, nullable = false)
-    private int place;
-
-    @Column(name = "points", nullable = false)
-    private int points;
+    @OneToOne
+    private TeamStatistics teamStatistics;
 
     @OneToMany
     @JoinColumn(name = "player_id", nullable = false)
