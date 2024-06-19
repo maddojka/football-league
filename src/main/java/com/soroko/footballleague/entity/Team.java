@@ -31,4 +31,9 @@ public class Team {
     @OneToMany
     @JoinColumn(name = "player_id", nullable = false)
     Set<Player> players = new HashSet<>();
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "standings_id", nullable = false)
+    private Standings standings;
 }

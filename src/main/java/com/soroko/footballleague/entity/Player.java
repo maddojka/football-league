@@ -38,4 +38,9 @@ public class Player {
     @OneToOne
     @JoinColumn(name = "player_statistics", nullable = false)
     private PlayerStatistics playerStatistics;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    private Team team;
 }

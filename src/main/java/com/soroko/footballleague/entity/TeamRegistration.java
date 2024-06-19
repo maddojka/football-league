@@ -49,4 +49,9 @@ public class TeamRegistration {
     @Column(name = "cc_cvv", nullable = false)
     private String ccCVV;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    private Team team;
+
 }
