@@ -27,6 +27,6 @@ public class Standings {
 
     @NotNull
     @OneToMany
-    @JoinColumn(name = "team_id", nullable = false)
+    @JoinColumn(name = "team_stand_id", nullable = false)
     Set<Team> teams = new HashSet<>();
 }

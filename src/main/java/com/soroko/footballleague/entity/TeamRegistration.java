@@ -51,7 +51,7 @@ public class TeamRegistration {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false)
+    @JoinColumn(name = "team_reg_id", nullable = false)
     private Team team;
 
 }

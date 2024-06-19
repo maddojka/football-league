@@ -54,7 +54,7 @@ public class TeamStatistics {
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "team_id", nullable = false)
+    @JoinColumn(name = "team_stat_id", nullable = false)
     public Team team;
 
 }
