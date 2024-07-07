@@ -6,6 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,11 @@ import java.text.ParseException;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
+    @Autowired
     private final JwtSecurityService jwtSecurityService;
     private final UserDetailService userDetailService;
 
+    @Autowired
     public JwtAuthenticationFilter(JwtSecurityService jwtSecurityService, UserDetailService userDetailService) {
         this.jwtSecurityService = jwtSecurityService;
         this.userDetailService = userDetailService;

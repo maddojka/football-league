@@ -1,7 +1,7 @@
 package com.soroko.footballleague.service;
 
-import com.springlessons.securityform.entity.ApplicationUser;
-import com.springlessons.securityform.repository.ApplicationUserRepository;
+import com.soroko.footballleague.entity.ApplicationUser;
+import com.soroko.footballleague.repository.ApplicationUserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
