@@ -16,8 +16,8 @@ public class StandingsController {
         this.standingsService = standingsService;
     }
 
-    @GetMapping
+  /*  @GetMapping
     public List<Standings> getAllStandings() {
         return null;
-    }
+    }*/
 }

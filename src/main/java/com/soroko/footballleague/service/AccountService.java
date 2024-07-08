@@ -20,18 +20,18 @@ public class AccountService {
     private final ApplicationUserRepository applicationUserRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtSecurityService jwtSecurityService;
+  //  private final JwtSecurityService jwtSecurityService;
     private final AuthenticationManager authenticationManager;
 
     public AccountService(ApplicationUserRepository applicationUserRepository,
                           UserRoleRepository userRoleRepository,
                           PasswordEncoder passwordEncoder,
-                          JwtSecurityService jwtSecurityService,
+                         /* JwtSecurityService jwtSecurityService,*/
                           AuthenticationManager authenticationManager) {
         this.applicationUserRepository = applicationUserRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.jwtSecurityService = jwtSecurityService;
+     //   this.jwtSecurityService = jwtSecurityService;
         this.authenticationManager = authenticationManager;
     }
 
@@ -52,7 +52,7 @@ public class AccountService {
         applicationUserRepository.save(user);
     }
 
-    public Token loginAccount(String username, String password) throws AccountException {
+   /* public Token loginAccount(String username, String password) throws AccountException {
 
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(username, password));
@@ -66,5 +66,5 @@ public class AccountService {
             throw new AccountException("Token cannot ne created: " + e.getMessage());
         }
         return token;
-    }
+    }*/
 }

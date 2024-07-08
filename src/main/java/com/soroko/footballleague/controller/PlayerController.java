@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController("/player")
+@RestController("/players")
 public class PlayerController {
     PlayerService playerService;
 
@@ -19,15 +19,15 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @GetMapping("/form")
+  /*  @GetMapping("/form")
     public String getPlayerAddForm(Player player) {
         return "player/player-add-form";
-    }
+    }*/
 
-    @PostMapping
+   /* @PostMapping
     public String addPlayer(@Valid Player player,
                                     BindingResult bindingResult,
                                     Model model) {
         return null;
-    }
+    }*/
 }

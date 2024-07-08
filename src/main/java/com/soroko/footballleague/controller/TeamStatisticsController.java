@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController("/teamstat")
 public class TeamStatisticsController {
     TeamRegistrationSetvice teamRegistrationSetvice;
 
@@ -14,9 +14,9 @@ public class TeamStatisticsController {
         this.teamRegistrationSetvice = teamRegistrationSetvice;
     }
 
-    @GetMapping("/teamstat")
+  /*  @GetMapping("/teamstat")
     public String teamstat(Model model) {
         return null;
-    }
+    }*/
 
 }
