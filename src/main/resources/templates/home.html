@@ -6,7 +6,7 @@
 </head>
 <body>
 <img th:src="@{/images/football-league.jpg}"/>
-<p>Welcome to the international football league, Dear User</p>
+<p>Dear User, welcome to the international football league website!</p>
 <p>Please select an option</p>
 <ol>
     <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
@@ -14,6 +14,6 @@
     <li><a href="teams.html" th:href="@{/teams}">Teams</a></li>
     <li><a href="standings.html" th:href="@{/standings}">Standings</a></li>
 </ol>
-
+<div th:insert="~{footer :: copy}"></div>
 </body>
 </html>
