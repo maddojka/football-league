@@ -2,9 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Matches</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Matches</h1>
-<div th:insert="~{footer :: copy}"></div>
+
 </body>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
 </html>

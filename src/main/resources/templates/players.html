@@ -2,9 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Players</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Players</h1>
-<div th:insert="~{footer :: copy}"></div>
+<p>Please select an option:</p>
+<ol>
+    <li><a href="regplayer.html" th:href="@{/regplayer}">Register player</a></li>
+    <li><a href="editplayer.html" th:href="@{/editplayer}">Edit player</a></li>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+</ol>
 </body>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
 </html>

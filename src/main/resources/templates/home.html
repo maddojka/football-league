@@ -3,17 +3,25 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Football league</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<img th:src="@{/images/football-league.jpg}"/>
+
+
 <p>Dear User, welcome to the international football league website!</p>
-<p>Please select an option</p>
+<p>Please select an option:</p>
 <ol>
     <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
     <li><a href="news.html" th:href="@{/order/list}">News</a></li>
     <li><a href="teams.html" th:href="@{/teams}">Teams</a></li>
+    <li><a href="players.html" th:href="@{/players}">Players</a></li>
     <li><a href="standings.html" th:href="@{/standings}">Standings</a></li>
 </ol>
-<div th:insert="~{footer :: copy}"></div>
+
 </body>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
 </html>

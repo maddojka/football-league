@@ -2,13 +2,17 @@ package com.soroko.footballleague.controller;
 
 import com.soroko.footballleague.entity.Standings;
 import com.soroko.footballleague.service.StandingsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/standings")
+@Slf4j
+@Controller
+@RequestMapping("/standings")
 public class StandingsController {
     StandingsService standingsService;
 

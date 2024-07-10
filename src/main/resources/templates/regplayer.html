@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Register new player</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+  <img th:src="@{/images/football-league.jpg}"
+       title = "jv" width="200" height="200"/>&nbsp;
+</head>
+<body>
+<form method="POST" th:action="@{/regplayer}" th:object="${player}">
+  <h3>Enter player name:</h3>
+  <label for="name">Name: </label>
+  <input type="text" th:field="*{name}"/>
+  <br/>
+  <label for="surname">Enter player surname: </label>
+  <input type="text" th:field="*{surname}"/>
+  <br/>
+  <label for="position">Enter player position: </label>
+  <input type="text" th:field="*{position}"/>
+  <br/>
+  <input type="submit" value="Submit"/>
+</form>
+</body>
+<footer>
+  <div th:insert="~{footer :: copy}"></div>
+</footer>
+</html>

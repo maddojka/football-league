@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Teams</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Teams</h1>
@@ -10,6 +13,9 @@
         <span th:text="${team.name}">Team Name</span>
     </li>
 </ul>
-<div th:insert="~{footer :: copy}"></div>
+
 </body>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
 </html>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Форма входа</title>
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <span th:if="${param.failed}">Ошибка авторизации</span>
@@ -13,4 +15,7 @@
     <input type="submit" value="Войти">
 </form>
 </body>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
 </html>
