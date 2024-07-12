@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Players</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
-         title = "jv" width="200" height="200"/>&nbsp;
+         title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Players</h1>
@@ -14,7 +14,6 @@
         <a th:href="@{/player/{id}(id=${player.id})}">Подробнее</a>
     </li>
     <br>
-    <a href="home.html" th:href="@{/}">Homepage</a>
 </ul>
 <p>Please select an option:</p>
 <ol>

@@ -27,11 +27,11 @@ public class TeamContoller {
         return "teams";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("team/{id}")
     public String getTeamById(@PathVariable long id, Model model) {
         Team team = teamService.getTeamById(id);
         model.addAttribute("team_info", team);
-        return "teams/team";
+        return "team";
     }
 
     @PostMapping("/regteam")

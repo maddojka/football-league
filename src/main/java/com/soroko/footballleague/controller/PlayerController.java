@@ -26,11 +26,11 @@ public class PlayerController {
         return "players";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("player/{id}")
     public String getPlayerById(@PathVariable long id, Model model) {
         Player player = playerService.getPlayerById(id);
         model.addAttribute("player_info", player);
-        return "players/player";
+        return "player";
     }
 
     @PostMapping("/regplayer")
