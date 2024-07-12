@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
-@RequestMapping("/players")
+//@RequestMapping("/players")
 public class PlayerController {
     PlayerService playerService;
 
@@ -20,23 +20,22 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @GetMapping
+    @GetMapping("/players")
     public String getAllPlayers(Model model) {
         model.addAttribute("players", playerService.getAllPlayers());
         return "players";
     }
 
     @GetMapping("/{id}")
-    public String getPlayerById(@PathVariable int id, Model model) {
+    public String getPlayerById(@PathVariable long id, Model model) {
         Player player = playerService.getPlayerById(id);
         model.addAttribute("player_info", player);
-        // doctor_info - ссылка на doctor из html
         return "players/player";
     }
-   /* @PostMapping
-    public String addPlayer(@Valid Player player,
-                                    BindingResult bindingResult,
-                                    Model model) {
-        return null;
-    }*/
+
+    @PostMapping("/regplayer")
+    public String addPlayer(@Valid Player player, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "/regplayer";
+        return "redirect:/regplayer/form?id=" + playerService.addPlayer(player);
+    }
 }

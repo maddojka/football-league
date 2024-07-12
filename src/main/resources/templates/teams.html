@@ -9,9 +9,15 @@
 <body>
 <h1>Teams</h1>
 <ul>
-    <li th:each="team : ${teams}">
+    <!--<li th:each="team : ${teams}">
         <span th:text="${team.name}">Team Name</span>
-    </li>
+    </li>-->
+      <li th:each="team : ${teams}">
+        <h3 th:text="${team.name}"></h3>
+        <a th:href="@{/team/{id}(id=${team.id})}">Подробнее</a>
+</li>
+    <br>
+    <a href="home.html" th:href="@{/}">Homepage</a>
 </ul>
 
 </body>

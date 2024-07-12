@@ -36,4 +36,7 @@ public class Team {
     @ManyToOne
     @JoinColumn(name = "standings_id", nullable = false)
     private Standings standings;
+
+    @Column(name = "deposit_approved")
+    private boolean depositApproved = false;
 }

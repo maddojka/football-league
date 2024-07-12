@@ -8,6 +8,14 @@
 </head>
 <body>
 <h1>Players</h1>
+<ul>
+    <li th:each="player : ${players}">
+        <h3 th:text="${player.name}"></h3>
+        <a th:href="@{/player/{id}(id=${player.id})}">Подробнее</a>
+    </li>
+    <br>
+    <a href="home.html" th:href="@{/}">Homepage</a>
+</ul>
 <p>Please select an option:</p>
 <ol>
     <li><a href="regplayer.html" th:href="@{/regplayer}">Register player</a></li>
