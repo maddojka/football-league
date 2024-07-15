@@ -22,12 +22,12 @@ public class PlayerService {
         player01.setId(1);
         player01.setName("John");
         player01.setSurname("Terry");
-        player01.setPosition("defender");
+        player01.setPosition(Player.Position.DEFENDER);
         Player player02 = new Player();
         player02.setId(2);
         player02.setName("Steven");
         player02.setSurname("Gerrard");
-        player02.setPosition("midfielder");
+        player02.setPosition(Player.Position.MIDFIELDER);
         List<Player> players = (List<Player>) playerRepository.findAll();
         if (players.isEmpty()) {
             players.add(player01);
@@ -41,7 +41,7 @@ public class PlayerService {
         player.setId(1);
         player.setName("John");
         player.setSurname("Terry");
-        player.setPosition("defender");
+        player.setPosition(Player.Position.DEFENDER);
         return playerRepository.findById(id).orElse(player);
     }
 

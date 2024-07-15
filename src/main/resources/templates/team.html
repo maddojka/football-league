@@ -13,6 +13,12 @@
 <h3>Players of this team</h3>
 <li><a href="players.html" th:href="@{/players}">Players</a></li>
 <br>
+<h3>Make the deposit</h3>
+<li><a href="payment-form.html" th:href="@{/payment-form}">Payment details</a></li>
+<br>
+<h3>Deposit approved</h3>
+<h3 th:text="${team_info.depositApproved}"></h3>
+<br>
 
 </body>
 <footer>

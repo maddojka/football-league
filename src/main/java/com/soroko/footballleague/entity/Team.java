@@ -58,7 +58,7 @@ public class Team {
     @Column(name = "deposit_approved")
     private boolean depositApproved = false;
 
-    public void addPlayer(Player player) {
+   /* public void addPlayer(Player player) {
         this.players.add(player);
-    }
+    }*/
 }

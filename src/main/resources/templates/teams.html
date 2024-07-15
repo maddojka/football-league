@@ -2,23 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Teams</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
-         title = "jv" width="200" height="200"/>&nbsp;
+         title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Teams</h1>
-<ul>
+<ol>
     <!--<li th:each="team : ${teams}">
         <span th:text="${team.name}">Team Name</span>
     </li>-->
-      <li th:each="team : ${teams}">
+    <ol th:each="team : ${teams}">
         <h3 th:text="${team.name}"></h3>
         <a th:href="@{/team/{id}(id=${team.id})}">Подробнее</a>
-</li>
+    </ol>
     <br>
-    <a href="home.html" th:href="@{/}">Homepage</a>
-</ul>
+    <li><a href="regteam.html" th:href="@{/regteam}">Register team</a></li>
+    <li><a href="editteam.html" th:href="@{/editteam}">Edit team</a></li>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+</ol>
 
 </body>
 <footer>

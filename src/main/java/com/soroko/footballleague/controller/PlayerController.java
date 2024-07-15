@@ -33,9 +33,16 @@ public class PlayerController {
         return "player";
     }
 
-    @PostMapping("/regplayer")
-    public String addPlayer(@Valid Player player, BindingResult bindingResult) {
+    @GetMapping("players/regplayer")
+    public String getRegPlayerForm(Model model) {
+        model.addAttribute("player", new Player());
+        return "regplayer";
+    }
+
+    @PostMapping()
+    public String addPlayer(@ModelAttribute("player") @Valid Player player, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/regplayer";
-        return "redirect:/regplayer/form?id=" + playerService.addPlayer(player);
+        playerService.addPlayer(player);
+        return "redirect:/players" + playerService.addPlayer(player);
     }
 }
