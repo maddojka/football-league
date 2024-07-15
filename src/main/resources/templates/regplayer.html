@@ -2,36 +2,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Register new player</title>
-  <link rel="stylesheet" th:href="@{/styles.css}" />
-  <img th:src="@{/images/football-league.jpg}"
-       title = "jv" width="200" height="200"/>&nbsp;
+    <title>Register new player</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <img th:src="@{/images/football-league.jpg}"
+         title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
+<p sec:authentication="name"></p><!-- вывод имени -->
+<p sec:authentication="principal.authorities"></p> <!--вывод роли-->
+
+<p sec:authorize="hasRole('USER')"></p> <!--внутри тега доступно для роли-->
+<p sec:authorize="hasRole('ADMIN')">
+<h3>Enter player name:</h3>
+<label for="name">Name: </label>
+<input type="text" th:field="*{name}"/>
+<span class="validationError"
+      th:if="${fields.hasErrors('name')}"
+      th:errors="*{name}"> Player name Error</span>
+</p>
+<p sec:authorize="isAuthenticated()"></p> <!--всем авторизованным-->
 <form method="POST" th:action="@{/regplayer}" th:object="${player}">
-  <h3>Enter player name:</h3>
-  <label for="name">Name: </label>
-  <input type="text" th:field="*{name}"/>
-  <span class="validationError"
-  th:if="${fields.hasErrors('name')}"
-    th:errors="*{name}"> Player name Error</span>
-  <br/>
-  <label for="surname">Enter player surname: </label>
-  <input type="text" th:field="*{surname}"/>
-  <span class="validationError"
-        th:if="${fields.hasErrors('surname')}"
-        th:errors="*{surname}"> Player surname Error</span>
-  <br/>
-  <label for="position">Enter player position: </label>
-  <input type="text" th:field="*{position}"/>
-  <span class="validationError"
-        th:if="${fields.hasErrors('position')}"
-        th:errors="*{position}"> Player position Error</span>
-  <br/>
-  <input type="submit" value="Submit"/>
+
+    <br/>
+    <label for="surname">Enter player surname: </label>
+    <input type="text" th:field="*{surname}"/>
+    <span class="validationError"
+          th:if="${fields.hasErrors('surname')}"
+          th:errors="*{surname}"> Player surname Error</span>
+    <br/>
+    <label for="position">Enter player position: </label>
+    <input type="text" th:field="*{position}"/>
+    <span class="validationError"
+          th:if="${fields.hasErrors('position')}"
+          th:errors="*{position}"> Player position Error</span>
+    <br/>
+    <input type="submit" value="Submit"/>
 </form>
 </body>
 <footer>
-  <div th:insert="~{footer :: copy}"></div>
+    <div th:insert="~{footer :: copy}"></div>
 </footer>
 </html>
+
+
+

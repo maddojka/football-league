@@ -5,32 +5,26 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "team_registration")
-public class TeamRegistration {
+public class TeamPayment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull(message = "The date of the registration is required")
-    @Column(name = "registered_at", nullable = false)
-    private LocalDateTime registeredAt;
+    @NotNull(message = "The date of the payment is required")
+    @Column(name = "placed_at", nullable = false)
+    private LocalDateTime placedAt;
 
-    @NotNull(message = "City is required")
-    @NotBlank(message = "City is required")
-    @Size(min = 2, max = 50)
-    @Column(name = "city", nullable = false)
-    private String City;
-
-    @NotNull(message = "Stadium is required")
-    @NotBlank(message = "Stadium is required")
-    @Size(min = 2, max = 50)
-    @Column(name = "stadium", nullable = false)
-    private String stadium;
+    @NotNull(message = "Payment number is required")
+    @NotBlank(message = "Payment number is required")
+    @Column(name = "payment_name", nullable = false)
+    private String paymentName;
 
     @NotNull(message = "Credit card number is required")
     @NotBlank(message = "Credit card number is required")

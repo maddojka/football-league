@@ -28,11 +28,14 @@ public class Player {
     @Column(name = "surname", nullable = false, length = 50)
     private String surname;
 
-    @NotNull(message = "Position of the player is required")
+    /*@NotNull(message = "Position of the player is required")
     @NotBlank(message = "Position of the player is required")
     @Size(min = 2, max = 30)
     @Column(name = "position", nullable = false, length = 50)
-    private String position;
+    private String position;*/
+
+    @NotNull
+    private Position position;
 
     @NotNull
     @OneToOne
@@ -43,4 +46,10 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
+
+
+
+    public enum Position {
+        GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD
+    }
 }
