@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
-//@RequestMapping("/players")
 public class PlayerController {
     PlayerService playerService;
 
