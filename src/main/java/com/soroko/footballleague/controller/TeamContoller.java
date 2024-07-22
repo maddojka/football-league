@@ -5,6 +5,8 @@ import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.service.TeamRegistrationSetvice;
 import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
+@FieldDefaults(level = AccessLevel.PRIVATE)
 //@RequestMapping("/teams")
 public class TeamContoller {
-    private final TeamService teamService;
+    final TeamService teamService;
 
     public TeamContoller(TeamService teamService) {
         this.teamService = teamService;

@@ -4,16 +4,21 @@ import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.service.MatchService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Stream;
+
 @Slf4j
 @Controller
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class MatchController {
-    MatchService matchService;
+    final MatchService matchService;
 
     public MatchController(MatchService matchService) {
         this.matchService = matchService;

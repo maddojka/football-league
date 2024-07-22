@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,17 +15,18 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "standings")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Standings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    long id;
 
     @NotNull(message = "Title is required")
     @NotBlank(message = "Title is required")
     @Size(min = 2, max = 30)
     @Column(name = "title", nullable = false)
-    private String title;
+    String title;
 
     @NotNull
     @OneToMany

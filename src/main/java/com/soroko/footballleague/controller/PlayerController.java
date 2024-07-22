@@ -4,6 +4,8 @@ import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.service.PlayerService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlayerController {
-    PlayerService playerService;
+    final PlayerService playerService;
 
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;

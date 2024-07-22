@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -13,37 +15,38 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "team")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    long id;
 
     @NotNull(message = "The date of the registration is required")
     @Column(name = "registered_at", nullable = false)
-    private LocalDateTime registeredAt;
+    LocalDateTime registeredAt;
 
     @NotNull(message = "Name of the team is required")
     @NotBlank(message = "Name of the team is required")
     @Column(name = "name", length = 50, nullable = false)
-    private String name;
+    String name;
 
     @NotNull(message = "City is required")
     @NotBlank(message = "City is required")
     @Size(min = 2, max = 50)
     @Column(name = "city", nullable = false)
-    private String City;
+    String City;
 
     @NotNull(message = "Stadium is required")
     @NotBlank(message = "Stadium is required")
     @Size(min = 2, max = 50)
     @Column(name = "stadium", nullable = false)
-    private String stadium;
+    String stadium;
 
     @NotNull
     @OneToOne
     @JoinColumn(name = "team_statistics", nullable = false)
-    private TeamStatistics teamStatistics;
+    TeamStatistics teamStatistics;
 
     @NotNull
     @OneToMany
@@ -53,10 +56,10 @@ public class Team {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "standings_id", nullable = false)
-    private Standings standings;
+    Standings standings;
 
     @Column(name = "deposit_approved")
-    private boolean depositApproved = false;
+    boolean depositApproved = false;
 
    /* public void addPlayer(Player player) {
         this.players.add(player);

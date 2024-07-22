@@ -5,28 +5,31 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @Entity
 @Table(name = "player")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    long id;
 
     @NotNull(message = "Name of the player is required")
     @NotBlank(message = "Name of the player is required")
     @Size(min = 2, max = 30)
     @Column(name = "name", nullable = false, length = 50)
-    private String name;
+    String name;
 
     @NotNull(message = "Surname of the player is required")
     @NotBlank(message = "Surname of the player is required")
     @Size(min = 2, max = 30)
     @Column(name = "surname", nullable = false, length = 50)
-    private String surname;
+    String surname;
 
     /*@NotNull(message = "Position of the player is required")
     @NotBlank(message = "Position of the player is required")
@@ -35,17 +38,17 @@ public class Player {
     private String position;*/
 
     @NotNull
-    private Position position;
+    Position position;
 
     @NotNull
     @OneToOne
     @JoinColumn(name = "player_statistics", nullable = false)
-    private PlayerStatistics playerStatistics;
+    PlayerStatistics playerStatistics;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
-    private Team team;
+    Team team;
 
 
 

@@ -1,16 +1,19 @@
 package com.soroko.footballleague.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "user_role")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserRole {
     @Id
     @GeneratedValue
-    private int id;
+    int id;
 
     @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    RoleType roleType;
 
     public void setId(int id) {
         this.id = id;

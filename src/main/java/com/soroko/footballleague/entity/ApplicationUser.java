@@ -1,25 +1,28 @@
 package com.soroko.footballleague.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
 // class User{}
 // org.springframework.security.core.userdetails.User
 
 @Entity
 @Table(name = "application_user")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ApplicationUser {
 
     @Id
     @GeneratedValue
-    private long id;
+    long id;
 
-    private String username;// login | email | phone
+    String username;// login | email | phone
 
-    private String password;
+    String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private UserRole userRole;
+    UserRole userRole;
 
     public ApplicationUser() {
     }
