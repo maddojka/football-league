@@ -9,7 +9,7 @@
 <body>
 <span th:if="${param.failed}">Ошибка авторизации</span>
 
-<form method="POST" th:action="@{/account/login}">
+<form method="POST" th:action="@{/login}">
     <input type="text" placeholder="Введите логин" name="application_user_username">
     <input type="password" placeholder="Введите пароль" name="application_user_password">
     <input type="submit" value="Войти">

@@ -1,6 +1,7 @@
 package com.soroko.footballleague.controller;
 
 import com.soroko.footballleague.entity.Player;
+import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.service.PlayerService;
 import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
@@ -37,16 +38,15 @@ public class PlayerController {
         return "player";
     }
 
-    @GetMapping("players/regplayer")
-    public String getRegPlayerForm(Model model) {
+    @GetMapping("/regplayer")
+    public String showPlayerForm(Model model) {
         model.addAttribute("player", new Player());
         return "regplayer";
     }
 
     @PostMapping("/regplayer")
-    public String addPlayer(@ModelAttribute("player") @Valid Player player, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "/regplayer";
+    public String addPlayer(@ModelAttribute("player") /*@Valid*/ Player player, BindingResult bindingResult) {
         playerService.addPlayer(player);
-        return "redirect:/players" + playerService.addPlayer(player);
+        return "redirect:/players"/* + playerService.addPlayer(player)*/;
     }
 }

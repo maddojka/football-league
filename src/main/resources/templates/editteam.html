@@ -2,19 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register new team</title>
+    <title>Register new player</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
     <img th:src="@{/images/football-league.jpg}"
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="POST" th:action="@{/regteam}" th:object="${team}">
+<form method="PATCH" th:action="@{/editteam}" th:object="${team}">
     <h3>Enter team name:</h3>
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}"/>
-  <!--  <span class="validationError"
+    <span class="validationError"
           th:if="${fields.hasErrors('name')}"
-          th:errors="*{name}"> Team name Error</span>-->
+          th:errors="*{name}"> Team name Error</span>
     <br/>
     <input type="submit" value="Submit"/>
 </form>

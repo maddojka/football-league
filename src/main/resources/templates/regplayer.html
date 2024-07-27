@@ -17,19 +17,20 @@
 
 <!--</p>-->
 <!--<p sec:authorize="isAuthenticated()"></p-->> <!--всем авторизованным-->
-<form method="POST" th:action="@{/players}" th:object="${player}">
-    <label for="name">Enter player name: </label>
+<form method="POST" th:action="@{/regplayer}" th:object="${player}">
+    <h3>Enter player name:</h3>
+    <label for="name">Name: </label>
     <input type="text" th:field="*{name}"/>
-    <span class="validationError"
+    <<!--span class="validationError"
           th:if="${fields.hasErrors('name')}"
-          th:errors="*{name}"> Player name Error</span>
+          th:errors="*{name}"> Player name Error</span>-->
     <br/>
-    <label for="surname">Enter player surname: </label>
-    <input type="text" th:field="*{surname}"/>
-    <span class="validationError"
+   <!-- <label for="surname">Enter player surname: </label>
+    <input type="text" th:field="*{surname}"/>-->
+   <!-- <span class="validationError"
           th:if="${fields.hasErrors('surname')}"
-          th:errors="*{surname}"> Player surname Error</span>
-    <br/>
+          th:errors="*{surname}"> Player surname Error</span>-->
+  <!--  <br/>-->
    <!-- <label for="position">Enter player position: </label>
     <input type="text" th:field="*{position}"/>
     <span class="validationError"

@@ -1,5 +1,6 @@
 package com.soroko.footballleague.controller;
 
+import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
@@ -33,18 +34,24 @@ public class TeamContoller {
         return "team";
     }
 
+    @GetMapping("/regteam")
+    public String showTeamForm(Model model) {
+        model.addAttribute("team", new Team());
+        return "regteam";
+    }
+
     @PostMapping("/regteam")
-    public String addTeam(@ModelAttribute("team") @Valid Team team, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "/regteam";
+    public String addTeam(@ModelAttribute("team") /*@Valid*/ Team team, BindingResult bindingResult) {
+     //   if (bindingResult.hasErrors()) return "/regteam";
         teamService.addTeam(team);
         return "redirect:/teams"/* + teamService.addTeam(team)*/;
     }
 //    /form?id=
 
-    @GetMapping("team/{id}/edit")
+    @GetMapping("/editteam") // team/{id}/edit
     public String editTeam(Model model, @PathVariable("id") long id) {
         model.addAttribute("team", teamService.getTeamById(id));
-        return "team/edit";
+        return "/editteam";
     }
 
     /*@PatchMapping("team/{id}")
