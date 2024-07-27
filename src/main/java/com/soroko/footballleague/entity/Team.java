@@ -5,14 +5,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "team")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -42,11 +44,6 @@ public class Team {
     @Size(min = 2, max = 50)
     @Column(name = "stadium", nullable = false)
     String stadium;
-
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "team_statistics", nullable = false)
-    TeamStatistics teamStatistics;
 
     @NotNull
     @OneToMany

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
-// class User{}
-// org.springframework.security.core.userdetails.User
 
 @Entity
 @Table(name = "application_user")

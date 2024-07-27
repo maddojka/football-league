@@ -1,22 +1,19 @@
 package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Match;
-import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.repository.MatchRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MatchService {
-    private MatchRepository matchRepository;
+    private final MatchRepository matchRepository;
 
-    public MatchService(MatchRepository matchRepository) {
-        this.matchRepository = matchRepository;
-    }
-
-    public Iterable<Match> getAllMatches() {
+    public List<Match> getAllMatches() {
         Match match01 = new Match();
         match01.setId(1);
         match01.setMatchDate(LocalDateTime.now());
@@ -25,7 +22,7 @@ public class MatchService {
         match02.setId(2);
         match02.setMatchDate(LocalDateTime.now());
         match02.setResult("0-0");
-        List<Match> matches = (List<Match>) matchRepository.findAll();
+        List<Match> matches = matchRepository.findAll();
         if (matches.isEmpty()) {
             matches.add(match01);
             matches.add(match02);

@@ -4,6 +4,7 @@ import com.soroko.footballleague.entity.TeamPayment;
 import com.soroko.footballleague.service.TeamRegistrationSetvice;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,15 +15,12 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/payments")
 @SessionAttributes("teamPayment")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TeamPaymentController {
     final TeamRegistrationSetvice teamRegistrationSetvice;
-
-    public TeamPaymentController(TeamRegistrationSetvice teamRegistrationSetvice) {
-        this.teamRegistrationSetvice = teamRegistrationSetvice;
-    }
 
     @GetMapping("/current")
     public String paymentForm() {

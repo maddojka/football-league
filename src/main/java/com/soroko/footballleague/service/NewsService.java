@@ -1,13 +1,12 @@
 package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.repository.NewsRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class NewsService {
-    private NewsRepository newsRepository;
+    private final NewsRepository newsRepository;
 
-    public NewsService(NewsRepository newsRepository) {
-        this.newsRepository = newsRepository;
-    }
 }

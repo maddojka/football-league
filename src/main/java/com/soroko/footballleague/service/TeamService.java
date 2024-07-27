@@ -3,26 +3,24 @@ package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.TeamRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TeamService {
-    private TeamRepository teamRepository;
+    private final TeamRepository teamRepository;
 
-    public TeamService(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
-
-    public Iterable<Team> getAllTeams() {
+    public List<Team> getAllTeams() {
         Team team01 = new Team();
         team01.setId(1);
         team01.setName("Liverpool");
         Team team02 = new Team();
         team02.setId(2);
         team02.setName("Everton");
-        List<Team> teams = (List<Team>) teamRepository.findAll();
+        List<Team> teams = teamRepository.findAll();
         if (teams.isEmpty()) {
             teams.add(team01);
             teams.add(team02);

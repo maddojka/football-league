@@ -6,10 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "player")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -39,11 +41,6 @@ public class Player {
 
     @NotNull
     Position position;
-
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "player_statistics", nullable = false)
-    PlayerStatistics playerStatistics;
 
     @NotNull
     @ManyToOne

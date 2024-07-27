@@ -1,23 +1,18 @@
 package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Player;
-import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.PlayerRepository;
-import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PlayerService {
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
-    public PlayerService(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
-    }
-
-    public Iterable<Player> getAllPlayers() {
+    public List<Player> getAllPlayers() {
         Player player01 = new Player();
         player01.setId(1);
         player01.setName("John");
@@ -28,7 +23,7 @@ public class PlayerService {
         player02.setName("Steven");
         player02.setSurname("Gerrard");
         player02.setPosition(Player.Position.MIDFIELDER);
-        List<Player> players = (List<Player>) playerRepository.findAll();
+        List<Player> players = playerRepository.findAll();
         if (players.isEmpty()) {
             players.add(player01);
             players.add(player02);
