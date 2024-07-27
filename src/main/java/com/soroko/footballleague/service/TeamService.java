@@ -38,4 +38,8 @@ public class TeamService {
     public long addTeam(Team team) {
         return teamRepository.save(team).getId();
     }
+
+    public long updateTeam(long id, Team team) {
+        return teamRepository.save(team).getId();
+    }
 }

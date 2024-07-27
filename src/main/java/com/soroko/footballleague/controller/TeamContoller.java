@@ -7,13 +7,11 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -39,7 +37,20 @@ public class TeamContoller {
     public String addTeam(@ModelAttribute("team") @Valid Team team, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/regteam";
         teamService.addTeam(team);
-        return "redirect:/teams/team?id=" + teamService.addTeam(team);
+        return "redirect:/teams"/* + teamService.addTeam(team)*/;
     }
 //    /form?id=
+
+    @GetMapping("team/{id}/edit")
+    public String editTeam(Model model, @PathVariable("id") long id) {
+        model.addAttribute("team", teamService.getTeamById(id));
+        return "team/edit";
+    }
+
+    /*@PatchMapping("team/{id}")
+    public String updateTeam(@ModelAttribute("team") @Valid Team team,
+                             @PathVariable("id") long id, BindingResult bindingResult) {
+        teamService.updateTeam(id, team);
+        return "redirect:/teams";
+    }*/
 }
