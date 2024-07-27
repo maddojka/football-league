@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NewsController {
 
     @GetMapping("/news")
-    public String getAllMatches() {
+    public String getNews() {
         return "news";
     }
 }
