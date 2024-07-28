@@ -39,14 +39,20 @@ public class PlayerController {
     }
 
     @GetMapping("/regplayer")
-    public String showPlayerForm(Model model) {
-        model.addAttribute("player", new Player());
+    public String showPlayerForm(Player player) {
         return "regplayer";
     }
 
     @PostMapping("/regplayer")
-    public String addPlayer(@ModelAttribute("player") /*@Valid*/ Player player) {
+    public String addPlayer(@Valid Player player, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "regplayer";
         playerService.addPlayer(player);
-        return "redirect:/players"/* + playerService.addPlayer(player)*/;
+        return "redirect:/players/";
+    }
+
+    @GetMapping("/editplayer")
+    public String editTeam(Model model, @PathVariable("id") long id) {
+        model.addAttribute("player", teamService.getTeamById(id));
+        return "/editplayer";
     }
 }

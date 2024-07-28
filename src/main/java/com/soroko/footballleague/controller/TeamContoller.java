@@ -36,19 +36,18 @@ public class TeamContoller {
 
     @GetMapping("/regteam")
     public String showTeamForm(Team team) {
-       // model.addAttribute("team", new Team());
         return "regteam";
     }
 
     @PostMapping("/regteam")
-    public String addTeam(/*@ModelAttribute("team")*/ @Valid Team team, BindingResult bindingResult) {
+    public String addTeam(@Valid Team team, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "regteam";
         teamService.addTeam(team);
-        return "redirect:/teams/"/* + teamService.addTeam(team)*/;
+        return "redirect:/teams";
     }
 //    /form?id=
 
-    @GetMapping("/editteam") // team/{id}/edit
+    @GetMapping("/{id}/editteam")
     public String editTeam(Model model, @PathVariable("id") long id) {
         model.addAttribute("team", teamService.getTeamById(id));
         return "/editteam";

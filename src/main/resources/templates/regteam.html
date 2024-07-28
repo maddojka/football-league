@@ -12,19 +12,23 @@
     <h3>Enter team data:</h3>
     <label for="name">Team name: </label>
     <input type="text" th:field="*{name}"/>
-
     <span class="validationError"
           th:if="${#fields.hasErrors('name')}"
           th:errors="*{name}"> Team name Error</span>
     <br/>
     <label for="city">City: </label>
     <input type="text" th:field="*{city}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('city')}"
+          th:errors="*{city}"> City name Error</span>
     <br/>
     <label for="stadium">Stadium: </label>
     <input type="text" th:field="*{stadium}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('stadium')}"
+          th:errors="*{stadium}"> Stadium name Error</span>
     <br/>
     <input type="submit" value="Submit"/>
-
 </form>
 </body>
 <footer>

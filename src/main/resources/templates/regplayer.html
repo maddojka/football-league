@@ -21,6 +21,21 @@
     <h3>Enter player name:</h3>
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}"> Player name Error</span>
+    <br/>
+    <label for="surname">Enter player surname: </label>
+    <input type="text" th:field="*{surname}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('surname')}"
+          th:errors="*{surname}"> Player surname Error</span>
+    <br/>
+    <label for="position">Enter player position: </label>
+    <input type="text" th:field="*{position}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('position')}"
+          th:errors="*{position}"> Player position Error</span>
     <br/>
     <input type="submit" value="Submit"/>
 </form>
