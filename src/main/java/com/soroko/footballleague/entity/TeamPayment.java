@@ -51,9 +51,9 @@ public class TeamPayment implements Serializable {
     @Column(name = "cc_cvv", nullable = false)
     String ccCVV;
 
-    @NotNull
+    /*@NotNull
     @ManyToOne
     @JoinColumn(name = "team_reg_id", nullable = false)
-    Team team;
+    Team team;*/
 
 }

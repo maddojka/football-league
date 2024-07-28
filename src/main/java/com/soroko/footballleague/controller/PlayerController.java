@@ -45,7 +45,7 @@ public class PlayerController {
     }
 
     @PostMapping("/regplayer")
-    public String addPlayer(@ModelAttribute("player") /*@Valid*/ Player player, BindingResult bindingResult) {
+    public String addPlayer(@ModelAttribute("player") /*@Valid*/ Player player) {
         playerService.addPlayer(player);
         return "redirect:/players"/* + playerService.addPlayer(player)*/;
     }

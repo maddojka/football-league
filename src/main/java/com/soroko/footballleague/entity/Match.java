@@ -32,8 +32,8 @@ public class Match {
     @Column(name = "result", nullable = false)
     String result;
 
-    @NotNull
+  /*  @NotNull
     @OneToMany
     @JoinColumn(name = "team_id", nullable = false)
-    Set<Team> teams = new HashSet<>();
+    Set<Team> teams = new HashSet<>();*/
 }

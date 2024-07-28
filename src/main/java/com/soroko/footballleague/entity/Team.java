@@ -26,7 +26,7 @@ public class Team {
 
     @NotNull(message = "The date of the registration is required")
     @Column(name = "registered_at", nullable = false)
-    LocalDateTime registeredAt;
+    LocalDateTime registeredAt = LocalDateTime.now();
 
     @NotNull(message = "Name of the team is required")
     @NotBlank(message = "Name of the team is required")
@@ -37,7 +37,7 @@ public class Team {
     @NotBlank(message = "City is required")
     @Size(min = 2, max = 50)
     @Column(name = "city", nullable = false)
-    String City;
+    String city;
 
     @NotNull(message = "Stadium is required")
     @NotBlank(message = "Stadium is required")
@@ -45,15 +45,15 @@ public class Team {
     @Column(name = "stadium", nullable = false)
     String stadium;
 
-    @NotNull
-    @OneToMany
+   // @NotNull
+   /* @OneToMany
     @JoinColumn(name = "player_id", nullable = false)
-    Set<Player> players = new HashSet<>();
+    Set<Player> players = new HashSet<>();*/
 
-    @NotNull
+  /*  @NotNull
     @ManyToOne
     @JoinColumn(name = "standings_id", nullable = false)
-    Standings standings;
+    Standings standings;*/
 
     @Column(name = "deposit_approved")
     boolean depositApproved = false;

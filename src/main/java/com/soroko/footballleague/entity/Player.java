@@ -42,10 +42,10 @@ public class Player {
     @NotNull
     Position position;
 
-    @NotNull
+   /* @NotNull
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
-    Team team;
+    Team team;*/
 
 
 

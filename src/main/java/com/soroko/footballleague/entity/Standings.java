@@ -30,8 +30,8 @@ public class Standings {
     @Column(name = "title", nullable = false)
     String title;
 
-    @NotNull
+   /* @NotNull
     @OneToMany
     @JoinColumn(name = "team_stand_id", nullable = false)
-    Set<Team> teams = new HashSet<>();
+    Set<Team> teams = new HashSet<>();*/
 }
