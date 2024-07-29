@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit team information</title>
+    <title>Update team information</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
     <img th:src="@{/images/football-league.jpg}"
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="PATCH" th:action="@{{id}/editteam}" th:object="${team}">
+<form method="PATCH" th:action="@{team/({id}id=${team.getId()})}" th:object="${team}">
     <h3>Enter team data:</h3>
     <label for="name">Team name: </label>
     <input type="text" th:field="*{name}"/>
@@ -28,7 +28,7 @@
           th:if="${#fields.hasErrors('stadium')}"
           th:errors="*{stadium}"> Stadium name Error</span>
     <br/>
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Update"/>
 
 </body>
 <footer>

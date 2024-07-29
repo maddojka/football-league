@@ -39,7 +39,10 @@ public class TeamService {
         return teamRepository.save(team).getId();
     }
 
-    public long updateTeam(long id, Team team) {
-        return teamRepository.save(team).getId();
+    public void updateTeam(long id, Team updatedTeam) {
+        Team teamToBeUpdated = getTeamById(id);
+        teamToBeUpdated.setName(updatedTeam.getName());
+        teamToBeUpdated.setCity(updatedTeam.getCity());
+        teamToBeUpdated.setStadium(updatedTeam.getStadium());
     }
 }

@@ -47,16 +47,16 @@ public class TeamContoller {
     }
 //    /form?id=
 
-    @GetMapping("/{id}/editteam")
+    @GetMapping("team/{id}/editteam")
     public String editTeam(Model model, @PathVariable("id") long id) {
         model.addAttribute("team", teamService.getTeamById(id));
-        return "/editteam";
+        return "/teams";
     }
 
-    /*@PatchMapping("team/{id}")
+    @PatchMapping("team/{id}")
     public String updateTeam(@ModelAttribute("team") @Valid Team team,
                              @PathVariable("id") long id, BindingResult bindingResult) {
         teamService.updateTeam(id, team);
         return "redirect:/teams";
-    }*/
+    }
 }
