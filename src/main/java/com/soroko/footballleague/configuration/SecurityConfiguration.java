@@ -104,7 +104,10 @@ public class SecurityConfiguration {
         // .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         // запросы необходимо пропускать через фильтр
         //  .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-         return http.build();
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
+                        .permitAll())
+                .csrf(AbstractHttpConfigurer::disable);
+        return http.build();
     }
 
     // .requestMatchers("/task")
