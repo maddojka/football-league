@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>"${match_info.name}"</title>
+    <title>"${news_info.name}"</title>
     <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
          title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<h1>Match info</h1>
+<h1>News info</h1>
 
-<h3>Result of the match</h3>
-<h2 th:text="${match_info.result}"></h2>
+<h3>Text of the news</h3>
+<h2 th:text="${news_info.text}"></h2>
 <br>
-<h3>Date of the match</h3>
-<h3 th:text="${match_info.matchDate}"></h3>
+<h3>Date of creation</h3>
+<h3 th:text="${news_info.createdAt}"></h3>
 <br>
-<li><a href="editresult.html" th:href="@{{id}/editresult}">Edit match data</a></li>
+<li><a href="editnews.html" th:href="@{{id}/editnews}">Edit news data</a></li>
 </body>
 <br>
 <ol>
     <li><a href="home.html" th:href="@{/}">Homepage</a></li>
-    <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
+    <li><a href="news.html" th:href="@{/news}">News</a></li>
 </ol>
 <footer>
     <div th:insert="~{footer :: copy}"></div>

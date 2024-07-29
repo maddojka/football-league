@@ -2,23 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register new player</title>
+    <title>Register new match</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
     <img th:src="@{/images/football-league.jpg}"
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="POST" th:action="@{/regteam}" th:object="${team}">
-    <h3>Enter team name:</h3>
-    <label for="name">Name: </label>
-    <input type="text" th:field="*{name}"/>
+<form method="POST" th:action="@{/result}" th:object="${match}">
+    <h3>Enter result data:</h3>
+    <label for="result">Result: </label>
+    <input type="text" th:field="*{result}"/>
     <span class="validationError"
-          th:if="${fields.hasErrors('name')}"
-          th:errors="*{name}"> Player name Error</span>
+          th:if="${#fields.hasErrors('result')}"
+          th:errors="*{result}"> Match result Error</span>
+    <br/>
+    <label for="matchDate">Enter a match date data: </label>
+    <input type="text" th:field="*{matchDate}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('matchDate')}"
+          th:errors="*{matchDate}"> Match date Error</span>
     <br/>
     <input type="submit" value="Submit"/>
 </form>
 </body>
+</br>
+<ol>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+    <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
+</ol>
 <footer>
     <div th:insert="~{footer :: copy}"></div>
 </footer>

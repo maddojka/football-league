@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add news</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <img th:src="@{/images/football-league.jpg}"
+         title = "jv" width="200" height="200"/>&nbsp;
+</head>
+<body>
+<form method="PATCH" th:action="@{/editnews}" th:object="${news}">
+    <h3>Enter a text of the news:</h3>
+    <label for="text">Text: </label>
+    <input type="text" th:field="*{text}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('text')}"
+          th:errors="*{text}"> News text Error</span>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</br>
+<ol>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+    <li><a href="news.html" th:href="@{/news}">News</a></li>
+</ol>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
+</html>

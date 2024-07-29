@@ -2,35 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit existing player</title>
+    <title>Edit match data</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
     <img th:src="@{/images/football-league.jpg}"
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="PATCH" th:action="@{/regplayer}" th:object="${player}">
-    <h3>Enter player name:</h3>
-    <label for="name">Name: </label>
-    <input type="text" th:field="*{name}"/>
+<form method="PATCH" th:action="@{/editresult}" th:object="${match}">
+    <h3>Enter result data:</h3>
+    <label for="result">Result: </label>
+    <input type="text" th:field="*{result}"/>
     <span class="validationError"
-          th:if="${fields.hasErrors('name')}"
-          th:errors="*{name}"> Player name Error</span>
+          th:if="${#fields.hasErrors('result')}"
+          th:errors="*{result}"> Match result Error</span>
     <br/>
-    <label for="surname">Enter player surname: </label>
-    <input type="text" th:field="*{surname}"/>
+    <label for="matchDate">Enter a match date data: </label>
+    <input type="text" th:field="*{matchDate}"/>
     <span class="validationError"
-          th:if="${fields.hasErrors('surname')}"
-          th:errors="*{surname}"> Player surname Error</span>
-    <br/>
-    <label for="position">Enter player position: </label>
-    <input type="text" th:field="*{position}"/>
-    <span class="validationError"
-          th:if="${fields.hasErrors('position')}"
-          th:errors="*{position}"> Player position Error</span>
+          th:if="${#fields.hasErrors('matchDate')}"
+          th:errors="*{matchDate}"> Match date Error</span>
     <br/>
     <input type="submit" value="Submit"/>
 </form>
 </body>
+</br>
+<ol>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+    <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
+</ol>
 <footer>
     <div th:insert="~{footer :: copy}"></div>
 </footer>

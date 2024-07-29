@@ -35,10 +35,15 @@ public class MatchController {
         return "match";
     }
 
-    @PostMapping()
-    public String addMatch(@ModelAttribute("result") @Valid Match match, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "/result";
+    @GetMapping("/result")
+    public String showMatches(Match match) {
+        return "result";
+    }
+
+    @PostMapping("/result")
+    public String addMatch(@Valid Match match, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "result";
         matchService.addMatch(match);
-        return "redirect:/matches" + matchService.addMatch(match);
+        return "redirect:/matches";
     }
 }

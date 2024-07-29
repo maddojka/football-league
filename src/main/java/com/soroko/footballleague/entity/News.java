@@ -3,6 +3,7 @@ package com.soroko.footballleague.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,10 +23,11 @@ public class News {
 
     @NotNull(message = "Text of the news is required")
     @NotBlank(message = "Text of the news is required")
+    @Size(min = 200, max = 3000)
     @Column(name = "text", nullable = false, length = 3000)
     String text;
 
     @NotNull(message = "Date of the news is required")
     @Column(name = "created_at", nullable = false)
-    LocalDateTime created_at;
+    LocalDateTime createdAt = LocalDateTime.now();
 }

@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ public class Match {
     long id;
 
     @NotNull(message = "Date of the match is required")
+    @DateTimeFormat
     @Column(name = "match_date", nullable = false)
     LocalDateTime matchDate;
 
