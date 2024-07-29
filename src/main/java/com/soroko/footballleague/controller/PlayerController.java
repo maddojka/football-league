@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlayerController {
     final PlayerService playerService;
-    private final TeamService teamService;
 
     @GetMapping("/players")
     public String getAllPlayers(Model model) {
@@ -52,7 +51,7 @@ public class PlayerController {
 
     @GetMapping("/editplayer")
     public String editTeam(Model model, @PathVariable("id") long id) {
-        model.addAttribute("player", teamService.getTeamById(id));
+        model.addAttribute("player", playerService.getPlayerById(id));
         return "/editplayer";
     }
 }
