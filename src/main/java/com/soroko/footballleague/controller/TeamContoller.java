@@ -43,6 +43,7 @@ public class TeamContoller {
     public String addTeam(@Valid Team team, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "regteam";
         teamService.addTeam(team);
+        log.info("Adding team {}", team);
         return "redirect:/teams";
     }
 //    /form?id=

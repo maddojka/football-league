@@ -44,6 +44,7 @@ public class MatchController {
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "result";
         matchService.addMatch(match);
+        log.info("Adding match {}", match);
         return "redirect:/matches";
     }
 }

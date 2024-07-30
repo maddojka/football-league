@@ -25,11 +25,6 @@ public class NewsController {
 
     final NewsService newsService;
 
-    /*@GetMapping("/news")
-    public String getNews() {
-        return "news";
-    }*/
-
     @GetMapping("/news")
     public String getAllNews(Model model) {
         model.addAttribute("news", newsService.getAllNews());
@@ -44,14 +39,15 @@ public class NewsController {
     }
 
     @GetMapping("/addnews")
-    public String showMatches(News news) {
+    public String showNews(News news) {
         return "addnews";
     }
 
     @PostMapping("/addnews")
-    public String addMatch(@Valid News news, BindingResult bindingResult) {
+    public String addNews(@Valid News news, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "addnews";
         newsService.addNews(news);
+        log.info("Adding news {}", news);
         return "redirect:/news";
     }
 }
