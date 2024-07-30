@@ -1,8 +1,11 @@
 package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Match;
+import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.repository.MatchRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -10,8 +13,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class MatchService {
-    private final MatchRepository matchRepository;
+    final MatchRepository matchRepository;
 
     public List<Match> getAllMatches() {
         Match match01 = new Match();
@@ -40,5 +44,11 @@ public class MatchService {
 
     public long addMatch(Match match) {
         return matchRepository.save(match).getId();
+    }
+
+    public void updateMatch(int id, Match updatedMatch) {
+        Match matchToBeUpdated = getMatchById(id);
+        matchToBeUpdated.setMatchDate(updatedMatch.getMatchDate());
+        matchToBeUpdated.setResult(updatedMatch.getResult());
     }
 }

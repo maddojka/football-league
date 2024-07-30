@@ -10,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -45,6 +42,21 @@ public class MatchController {
         if (bindingResult.hasErrors()) return "result";
         matchService.addMatch(match);
         log.info("Adding match {}", match);
+        return "redirect:/matches";
+    }
+
+    @GetMapping("/editresult/{id}")
+    public String editMatch(Model model, @PathVariable(name = "id") int id) {
+        model.addAttribute("match", matchService.getMatchById(id));
+        return "/matches";
+    }
+
+    @PatchMapping("/editresult/{id}")
+    public String updateMatch(@ModelAttribute("match") @Valid Match match,
+                              @PathVariable("id") int id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "editresult";
+        matchService.updateMatch(id, match);
+        log.info("Updating match {}", match);
         return "redirect:/matches";
     }
 }

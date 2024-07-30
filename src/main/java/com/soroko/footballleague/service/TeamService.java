@@ -3,15 +3,18 @@ package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.TeamRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class TeamService {
-    private final TeamRepository teamRepository;
+    final TeamRepository teamRepository;
 
     public List<Team> getAllTeams() {
         Team team01 = new Team();

@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author yuriy.soroko
@@ -31,7 +29,7 @@ public class NewsController {
         return "news";
     }
 
-    @GetMapping("singlenews/{id}")
+    @GetMapping("/singlenews/{id}")
     public String getMatchById(@PathVariable int id, Model model) {
         News news = newsService.getNewsById(id);
         model.addAttribute("news_info", news);
@@ -48,6 +46,21 @@ public class NewsController {
         if (bindingResult.hasErrors()) return "addnews";
         newsService.addNews(news);
         log.info("Adding news {}", news);
+        return "redirect:/news";
+    }
+
+    @GetMapping("/editnews/{id}")
+    public String editNews(Model model, @PathVariable(name = "id") int id) {
+        model.addAttribute("singlenews", newsService.getNewsById(id));
+        return "/news";
+    }
+
+    @PatchMapping("/editnews/{id}")
+    public String updateNews(@ModelAttribute("singlenews") @Valid News news,
+                              @PathVariable("id") int id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "editnews";
+        newsService.updateNews(id, news);
+        log.info("Updating news {}", news);
         return "redirect:/news";
     }
 }

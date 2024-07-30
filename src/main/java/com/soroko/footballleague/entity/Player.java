@@ -4,6 +4,7 @@ package com.soroko.footballleague.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -46,7 +47,6 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
     Team team;*/
-
 
 
     public enum Position {

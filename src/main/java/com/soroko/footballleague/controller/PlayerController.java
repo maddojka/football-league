@@ -1,23 +1,17 @@
 package com.soroko.footballleague.controller;
 
 import com.soroko.footballleague.entity.Player;
-import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.PlayerRepository;
 import com.soroko.footballleague.service.PlayerService;
-import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -33,7 +27,7 @@ public class PlayerController {
         return "players";
     }
 
-    @GetMapping("player/{id}")
+    @GetMapping("/player/{id}")
     public String getPlayerById(@PathVariable long id, Model model) {
         Player player = playerService.getPlayerById(id);
         model.addAttribute("player_info", player);
@@ -53,14 +47,18 @@ public class PlayerController {
         return "redirect:/players";
     }
 
-  /*  @ModelAttribute
-    public void addAttributes(Model model, Player player) {
-        model.addAttribute(Player.Position.valueOf(player.getName()).toString().toLowerCase());
-    }*/
-
-    @GetMapping("/editplayer")
-    public String editTeam(Model model, @PathVariable("id") long id) {
+    @GetMapping("/editplayer/{id}")
+    public String editPlayer(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("player", playerService.getPlayerById(id));
-        return "/editplayer";
+        return "/players";
+    }
+
+    @PatchMapping("/editplayer/{id}")
+    public String updateTeam(@ModelAttribute("player") @Valid Player player,
+                             @PathVariable("id") long id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "editplayer";
+        playerService.updatePlayer(id, player);
+        log.info("Updating player{}", player);
+        return "redirect:/player";
     }
 }

@@ -1,5 +1,6 @@
 package com.soroko.footballleague.service;
 
+import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.News;
 import com.soroko.footballleague.repository.NewsRepository;
 import lombok.AccessLevel;
@@ -43,6 +44,12 @@ public class NewsService {
 
     public long addNews(News news) {
         return newsRepository.save(news).getId();
+    }
+
+    public void updateNews(int id, News updatedNews) {
+        News newsToBeUpdated = getNewsById(id);
+        newsToBeUpdated.setText(updatedNews.getText());
+        newsToBeUpdated.setCreatedAt(updatedNews.getCreatedAt());
     }
 
 

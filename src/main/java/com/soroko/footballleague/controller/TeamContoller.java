@@ -1,6 +1,5 @@
 package com.soroko.footballleague.controller;
 
-import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
@@ -8,7 +7,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +25,7 @@ public class TeamContoller {
         return "teams";
     }
 
-    @GetMapping("team/{id}")
+    @GetMapping("/team/{id}")
     public String getTeamById(@PathVariable long id, Model model) {
         Team team = teamService.getTeamById(id);
         model.addAttribute("team_info", team);
@@ -48,16 +46,18 @@ public class TeamContoller {
     }
 //    /form?id=
 
-    @GetMapping("team/{id}/editteam")
-    public String editTeam(Model model, @PathVariable("id") long id) {
+    @GetMapping("/editteam/{id}")
+    public String editTeam(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("team", teamService.getTeamById(id));
         return "/teams";
     }
 
-    @PatchMapping("team/{id}")
+    @PatchMapping("editteam/{id}")
     public String updateTeam(@ModelAttribute("team") @Valid Team team,
                              @PathVariable("id") long id, BindingResult bindingResult) {
         teamService.updateTeam(id, team);
+        log.info("Updating team{}", team);
         return "redirect:/teams";
     }
+
 }
