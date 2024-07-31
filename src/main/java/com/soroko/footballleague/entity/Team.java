@@ -10,8 +10,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -45,6 +43,10 @@ public class Team {
     @Column(name = "stadium", nullable = false)
     String stadium;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "match_id")
+    private Match match;
+
    // @NotNull
    /* @OneToMany
     @JoinColumn(name = "player_id", nullable = false)
@@ -61,4 +63,9 @@ public class Team {
    /* public void addPlayer(Player player) {
         this.players.add(player);
     }*/
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

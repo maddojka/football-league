@@ -1,6 +1,7 @@
 package com.soroko.footballleague.controller;
 
 import com.soroko.footballleague.entity.Match;
+import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.service.MatchService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -32,16 +33,38 @@ public class MatchController {
         return "match";
     }
 
-    @GetMapping("/result")
+  /*  @GetMapping("/result")
     public String showMatches(Match match) {
+        match.getTeams().add(new Team());
+        match.getTeams().add(new Team());
         return "result";
+    }*/
+
+  /*  @GetMapping("/result")
+    public ModelAndView registration(){
+        ModelAndView modelAndView = new ModelAndView();
+        Match match = new Match();
+        match.getTeams().add(new Team());
+        match.getTeams().add(new Team());
+        modelAndView.addObject("match", match);
+        modelAndView.setViewName("result");
+        return modelAndView;
+    }*/
+
+    @GetMapping("/result")
+    public String showResultForm(Model model) {
+        Match match = new Match();
+        match.getTeams().add(new Team());
+        match.getTeams().add(new Team());
+        model.addAttribute("result", match);
+        return "result1";
     }
 
     @PostMapping("/result")
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
             log.error("Something went wrong while updating match result {}", match);
-            return "result";
+            return "result1";
         }
         matchService.addMatch(match);
         log.info("Adding match {}", match);
@@ -59,10 +82,12 @@ public class MatchController {
                               @PathVariable("id") int id, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
             log.error("Something went wrong while updating match result {}", match);
-            return "result";
+            return "result1";
         }
         matchService.updateMatch(id, match);
         log.info("Updating match {}", match);
         return "redirect:/matches";
     }
+
+
 }

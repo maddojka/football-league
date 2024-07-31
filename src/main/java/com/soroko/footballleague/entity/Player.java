@@ -48,7 +48,6 @@ public class Player {
     @JoinColumn(name = "team_id", nullable = false)
     Team team;*/
 
-
     public enum Position {
         GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD
     }

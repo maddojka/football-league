@@ -2,14 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit match data</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <title>Register new match</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
-         title = "jv" width="200" height="200"/>&nbsp;
+         title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="PATCH" th:action="@{/editresult}" th:object="${match}">
+<form method="POST" th:action="@{/result}"> th:object="${match}"
     <h3>Enter result data:</h3>
+
+    <label> First team:
+        <input type="text" th:field="*{match.teams[0].name}" name="name" <!--th:placeholder="team"-->>
+    </label>
+    <br/>
+
+    <label> Second team:
+        <input type="text" th:field="*{match.teams[1].name}" name="name" <!--th:placeholder="team"-->>
+    </label>
+
+    </br>
+
     <label for="result">Result: </label>
     <input type="text" th:field="*{result}"/>
     <span class="validationError"

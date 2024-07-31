@@ -10,12 +10,13 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+
+@Entity
 @Getter
 @Setter
-@Entity
 @Table(name = "match")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Match {
@@ -34,8 +35,9 @@ public class Match {
     @Column(name = "result", nullable = false)
     String result;
 
-  /*  @NotNull
-    @OneToMany
-    @JoinColumn(name = "team_id", nullable = false)
-    Set<Team> teams = new HashSet<>();*/
+    @NotNull
+    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+    List<Team> teams = new ArrayList<>();
+
 }
+

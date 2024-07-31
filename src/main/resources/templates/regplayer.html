@@ -32,6 +32,7 @@
           th:errors="*{surname}"> Player surname Error</span>
     <br/>
     <label for="position">Enter player position: </label>
+    <h5>Available options GOALKEEPER, DEFENDER, MIDFIELDER, FORWARD</h5>
     <input type="text" th:field="*{position}"/>
     <span class="validationError"
           th:if="${#fields.hasErrors('position')}"
