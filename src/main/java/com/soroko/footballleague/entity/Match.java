@@ -23,6 +23,7 @@ public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "match_id")
     long id;
 
     @NotNull(message = "Date of the match is required")
@@ -35,8 +36,8 @@ public class Match {
     @Column(name = "result", nullable = false)
     String result;
 
-    @NotNull
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+
+    @ManyToMany(mappedBy = "matches", cascade = CascadeType.ALL)
     List<Team> teams = new ArrayList<>();
 
 }

@@ -1,19 +1,54 @@
-<form action="#" th:action="@{/result}" th:object="${match}"
-      method="post">
-    <fieldset>
-        <input type="submit" id="submitButton" th:value="Save">
-        <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
-        <table>
-            <thead>
-            <tr>
-                <th> Team</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="team, itemStat : *{teams}">
-                <td><input th:field="*{teams[__${itemStat.index}__].name}" /></td>
-            </tr>
-            </tbody>
-        </table>
-    </fieldset>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register new match</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <img th:src="@{/images/football-league.jpg}"
+         title="jv" width="200" height="200"/>&nbsp;
+</head>
+<body>
+<form method="POST" th:action="@{/result}" th:object="${match}">
+    <h3>Enter result data:</h3>
+
+    <label> First team:
+        <input type="text" th:field="*{teams[0].name}" name="name", th:placeholder="name">
+    </label>
+    <br/>
+
+    <label> First team:
+        <input type="text" th:field="*{teams[1].name}" name="name", th:placeholder="name">
+    </label>
+    <br/>
+
+   <!-- <label> Second team:
+        <input type="text" th:field="*{match.getTeams().get(1).name}" name="name">
+    </label>
+
+    </br>-->
+
+    <label for="result">Result: </label>
+    <input type="text" th:field="*{result}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('result')}"
+          th:errors="*{result}"> Match result Error</span>
+    <br/>
+    <label for="matchDate">Enter the match date: </label>
+    <h5>Type format XXXX-XX-XXTXX:XX:XX</h5>
+    <input type="text" th:field="*{matchDate}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('matchDate')}"
+          th:errors="*{matchDate}"> Match date Error</span>
+    <br/>
+    <input type="submit" value="Submit"/>
 </form>
+</body>
+</br>
+<ol>
+    <li><a href="home.html" th:href="@{/}">Homepage</a></li>
+    <li><a href="matches.html" th:href="@{/matches}">Matches</a></li>
+</ol>
+<footer>
+    <div th:insert="~{footer :: copy}"></div>
+</footer>
+</html>

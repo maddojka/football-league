@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
@@ -33,14 +34,14 @@ public class MatchController {
         return "match";
     }
 
-  /*  @GetMapping("/result")
+   /* @GetMapping("/result")
     public String showMatches(Match match) {
         match.getTeams().add(new Team());
         match.getTeams().add(new Team());
         return "result";
     }*/
 
-  /*  @GetMapping("/result")
+    @GetMapping("/result")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         Match match = new Match();
@@ -49,23 +50,24 @@ public class MatchController {
         modelAndView.addObject("match", match);
         modelAndView.setViewName("result");
         return modelAndView;
-    }*/
+    }
 
-    @GetMapping("/result")
+    /*@GetMapping("/result")
     public String showResultForm(Model model) {
         Match match = new Match();
         match.getTeams().add(new Team());
         match.getTeams().add(new Team());
         model.addAttribute("result", match);
-        return "result1";
-    }
+        return "result";
+    }*/
 
     @PostMapping("/result")
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
             log.error("Something went wrong while updating match result {}", match);
-            return "result1";
+            return "result";
         }
+
         matchService.addMatch(match);
         log.info("Adding match {}", match);
         return "redirect:/matches";
@@ -82,7 +84,7 @@ public class MatchController {
                               @PathVariable("id") int id, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
             log.error("Something went wrong while updating match result {}", match);
-            return "result1";
+            return "result";
         }
         matchService.updateMatch(id, match);
         log.info("Updating match {}", match);

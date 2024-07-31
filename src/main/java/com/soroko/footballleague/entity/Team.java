@@ -10,6 +10,8 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,6 +22,7 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "team_id")
     long id;
 
     @NotNull(message = "The date of the registration is required")
@@ -31,23 +34,20 @@ public class Team {
     @Column(name = "name", length = 50, nullable = false)
     String name;
 
-    @NotNull(message = "City is required")
-    @NotBlank(message = "City is required")
+
     @Size(min = 2, max = 50)
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     String city;
 
-    @NotNull(message = "Stadium is required")
-    @NotBlank(message = "Stadium is required")
     @Size(min = 2, max = 50)
-    @Column(name = "stadium", nullable = false)
+    @Column(name = "stadium")
     String stadium;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "match_id")
-    private Match match;
+//    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany/*(mappedBy = "teams", cascade = CascadeType.ALL)*/
+    List<Match> matches = new ArrayList<>();
 
-   // @NotNull
+    // @NotNull
    /* @OneToMany
     @JoinColumn(name = "player_id", nullable = false)
     Set<Player> players = new HashSet<>();*/
@@ -60,12 +60,5 @@ public class Team {
     @Column(name = "deposit_approved")
     boolean depositApproved = false;
 
-   /* public void addPlayer(Player player) {
-        this.players.add(player);
-    }*/
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

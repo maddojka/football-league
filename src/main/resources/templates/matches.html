@@ -11,7 +11,7 @@
 <ul>
     </br>
     <tr th:each="match : ${matches}">
-        <h3 th:text="${match.getTeams().get(0)} + ' - ' + ${match.getTeams().get(1)}"></h3>
+       <!-- <h3 th:text="${match.teams[0].name} + ' - ' + ${match.teams[1].name}"></h3>-->
         <h4 th:text="${match.result}"></h4>
         <h4 th:text="${match.matchDate}"></h4>
         <a th:href="@{/match/{id}(id=${match.id})}">Подробнее</a>
@@ -20,7 +20,7 @@
 </ul>
 <p>Please select an option:</p>
 <ol>
-    <li><a href="result.html" th:href="@{/result}">Add match</a></li>
+    <li><a href="result2.html" th:href="@{/result}">Add match</a></li>
     <li><a href="home.html" th:href="@{/}">Homepage</a></li>
 </ol>
 </body>
