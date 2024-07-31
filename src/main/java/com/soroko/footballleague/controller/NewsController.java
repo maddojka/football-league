@@ -43,7 +43,10 @@ public class NewsController {
 
     @PostMapping("/addnews")
     public String addNews(@Valid News news, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "addnews";
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating news {}", news);
+            return "addnews";
+        }
         newsService.addNews(news);
         log.info("Adding news {}", news);
         return "redirect:/news";
@@ -58,7 +61,10 @@ public class NewsController {
     @PatchMapping("/editnews/{id}")
     public String updateNews(@ModelAttribute("singlenews") @Valid News news,
                               @PathVariable("id") int id, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "editnews";
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating news {}", news);
+            return "addnews";
+        }
         newsService.updateNews(id, news);
         log.info("Updating news {}", news);
         return "redirect:/news";

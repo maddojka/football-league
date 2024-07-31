@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlayerController {
     final PlayerService playerService;
-    private final PlayerRepository playerRepository;
 
     @GetMapping("/players")
     public String getAllPlayers(Model model) {
@@ -41,7 +40,10 @@ public class PlayerController {
 
     @PostMapping("/regplayer")
     public String addPlayer(@Valid Player player, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "regplayer";
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating player {}", player);
+            return "regplayer";
+        }
         playerService.addPlayer(player);
         log.info("Adding playing {}", player);
         return "redirect:/players";
@@ -56,7 +58,10 @@ public class PlayerController {
     @PatchMapping("/editplayer/{id}")
     public String updateTeam(@ModelAttribute("player") @Valid Player player,
                              @PathVariable("id") long id, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "editplayer";
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating player {}", player);
+            return "regplayer";
+        }
         playerService.updatePlayer(id, player);
         log.info("Updating player{}", player);
         return "redirect:/player";

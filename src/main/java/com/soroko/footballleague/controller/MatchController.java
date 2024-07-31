@@ -39,7 +39,10 @@ public class MatchController {
 
     @PostMapping("/result")
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "result";
+        if (bindingResult.hasErrors())  {
+            log.error("Something went wrong while updating match result {}", match);
+            return "result";
+        }
         matchService.addMatch(match);
         log.info("Adding match {}", match);
         return "redirect:/matches";
@@ -54,7 +57,10 @@ public class MatchController {
     @PatchMapping("/editresult/{id}")
     public String updateMatch(@ModelAttribute("match") @Valid Match match,
                               @PathVariable("id") int id, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "editresult";
+        if (bindingResult.hasErrors())  {
+            log.error("Something went wrong while updating match result {}", match);
+            return "result";
+        }
         matchService.updateMatch(id, match);
         log.info("Updating match {}", match);
         return "redirect:/matches";

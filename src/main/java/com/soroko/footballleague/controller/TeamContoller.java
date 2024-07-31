@@ -39,7 +39,10 @@ public class TeamContoller {
 
     @PostMapping("/regteam")
     public String addTeam(@Valid Team team, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "regteam";
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating team {}", team);
+            return "regteam";
+        }
         teamService.addTeam(team);
         log.info("Adding team {}", team);
         return "redirect:/teams";
@@ -55,6 +58,10 @@ public class TeamContoller {
     @PatchMapping("editteam/{id}")
     public String updateTeam(@ModelAttribute("team") @Valid Team team,
                              @PathVariable("id") long id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            log.error("Something went wrong while updating team {}", team);
+            return "regteam";
+        }
         teamService.updateTeam(id, team);
         log.info("Updating team{}", team);
         return "redirect:/teams";
