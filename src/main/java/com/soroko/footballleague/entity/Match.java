@@ -36,9 +36,12 @@ public class Match {
     @Column(name = "result", nullable = false)
     String result;
 
-
-    @ManyToMany(mappedBy = "matches", cascade = CascadeType.ALL)
-    List<Team> teams = new ArrayList<>();
+    @NotNull
+    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+    /*@JoinTable(name = "tb_match_teams",
+            joinColumns = @JoinColumn(name = "match_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id"))*/
+            List<Team> teams = new ArrayList<>();
 
 }
 

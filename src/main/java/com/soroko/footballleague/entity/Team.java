@@ -43,9 +43,10 @@ public class Team {
     @Column(name = "stadium")
     String stadium;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-    @ManyToMany/*(mappedBy = "teams", cascade = CascadeType.ALL)*/
-    List<Match> matches = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    // @ManyToMany/*(mappedBy = "teams", cascade = CascadeType.ALL)*/
+//    List<Match> matches = new ArrayList<>();
+    Match match;
 
     // @NotNull
    /* @OneToMany

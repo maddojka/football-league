@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>"${team_info.name}"</title>
+    <title th:text="${team_info.name}"></titleth:text></title>
     <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
          title="jv" width="200" height="200"/>&nbsp;
@@ -14,7 +14,7 @@
 <li><a href="players.html" th:href="@{/players}">Players</a></li>
 <br>
 <h3>Make the deposit</h3>
-<li><a href="payment-form.html" th:href="@{/payment-form}">Payment details</a></li>
+<li><a href="payment.html" th:href="@{id=${team_info.getId()}/payment}">Payment details</a></li>
 <br>
 <h3>Deposit approved</h3>
 <h3 th:text="${team_info.depositApproved}"></h3>

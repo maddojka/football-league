@@ -67,7 +67,6 @@ public class MatchController {
             log.error("Something went wrong while updating match result {}", match);
             return "result";
         }
-
         matchService.addMatch(match);
         log.info("Adding match {}", match);
         return "redirect:/matches";

@@ -1,7 +1,9 @@
 package com.soroko.footballleague.controller;
 
+import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.entity.TeamPayment;
 import com.soroko.footballleague.service.TeamRegistrationSetvice;
+import com.soroko.footballleague.service.TeamService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -16,29 +18,37 @@ import org.springframework.web.bind.support.SessionStatus;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/payments")
+/*@RequestMapping("/payments")*/
 @SessionAttributes("teamPayment")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TeamPaymentController {
     final TeamRegistrationSetvice teamRegistrationSetvice;
+    final TeamService teamService;
 
-    @GetMapping("/current")
+    /*@GetMapping("team/{id}/payment")
     public String paymentForm() {
-        return "paymentForm";
+        return "payment";
+    }*/
+
+    @GetMapping("team/payment")
+    public String getTeamById(@RequestParam("id") int id, Model model) {
+        TeamPayment teamPayment = teamRegistrationSetvice.getTeamById(id);
+        model.addAttribute("payment_info", teamPayment);
+        return "payment";
     }
 
-    @PostMapping()
+    @PostMapping("payment")
     public String processPayment(@Valid TeamPayment teamPayment, Errors errors, SessionStatus sessionStatus) {
         if (errors.hasErrors()) {
-            return "paymentForm";
+            return "payment";
         }
         log.info("Order submitted: {}", teamPayment);
         sessionStatus.setComplete();
-        return "redirect:/";
+        return "redirect:/team/" + teamPayment.getId();
     }
 
-    @GetMapping("/approved")
+    /*@GetMapping("/approved")
     public String showTeamRegistrations(Model model) {
         return null;
-    }
+    }*/
 }

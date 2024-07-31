@@ -49,15 +49,15 @@ public class TeamContoller {
     }
 //    /form?id=
 
-    @GetMapping("/editteam/{id}")
-    public String editTeam(Model model, @PathVariable(name = "id") Long id) {
+    @GetMapping("/editteam")
+    public String editTeam(Model model, @RequestParam("id") Long id) {
         model.addAttribute("team", teamService.getTeamById(id));
         return "/teams";
     }
 
-    @PatchMapping("editteam/{id}")
+    @PatchMapping("editteam")
     public String updateTeam(@ModelAttribute("team") @Valid Team team,
-                             @PathVariable("id") long id, BindingResult bindingResult) {
+                             @RequestParam("id") long id, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Something went wrong while updating team {}", team);
             return "regteam";

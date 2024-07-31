@@ -1,7 +1,6 @@
 package com.soroko.footballleague.service;
 
 import com.soroko.footballleague.entity.Player;
-import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.PlayerRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
