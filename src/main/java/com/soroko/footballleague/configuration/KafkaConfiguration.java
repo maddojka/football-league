@@ -1,7 +1,5 @@
 package com.soroko.footballleague.configuration;
 
-import org.apache.kafka.clients.admin.NewTopic;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -9,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class KafkaConfiguration {
-    @Bean
+    /*@Bean
     public NewTopic newTopic() {
         return new NewTopic("payment notifier", 1, (short) 1);
-    }
+    }*/
 }

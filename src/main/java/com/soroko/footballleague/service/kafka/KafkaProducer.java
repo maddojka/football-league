@@ -1,6 +1,5 @@
-package com.soroko.footballleague.service;
+package com.soroko.footballleague.service.kafka;
 
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class KafkaProducer {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+   /* private final KafkaTemplate<String, String> kafkaTemplate;
 
     public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
@@ -16,5 +15,5 @@ public class KafkaProducer {
 
     public void sendMessage(String message) {
         kafkaTemplate.send("payment notifier", message);
-    }
+    }*/
 }

@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitConfiguration {
-    @Bean
+   /* @Bean
     public Queue queue() {
         return new Queue("FirstQueue", false);
-    }
+    }*/
 }
