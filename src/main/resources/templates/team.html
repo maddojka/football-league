@@ -19,7 +19,10 @@
 <h3>Deposit approved</h3>
 <h3 th:text="${team_info.depositApproved}"></h3>
 <br>
-<li><a href="editteam.html" th:href="@{/editteam/{id}}">Edit team</a></li>
+<!--<li><a href="editteam.html" th:href="@{{id}/editteam}">Edit team</a></li>-->
+<a th:href="@{/team/{id}(id=${team_info.id})/editteam}">Edit team</a>
+
+<!--team/{id}/editteam-->
 </body>
 <br>
 <ol>

@@ -21,7 +21,7 @@ public class MatchService {
     final List<TeamDTO> teamDTOs;
 
     public List<Match> getAllMatches() {
-        List<Team> teams = new ArrayList<>();
+       /* List<Team> teams = new ArrayList<>();
         Team team01 = new Team();
         team01.setId(1);
         team01.setName("Liverpool");
@@ -39,12 +39,12 @@ public class MatchService {
         match02.setId(2);
         match02.setTeams(teams);
         match02.setMatchDate(LocalDateTime.now());
-        match02.setResult("0-0");
+        match02.setResult("0-0");*/
         List<Match> matches = matchRepository.findAll();
-        if (matches.isEmpty()) {
+      /*  if (matches.isEmpty()) {
             matches.add(match01);
             matches.add(match02);
-        }
+        }*/
         return matches;
     }
 

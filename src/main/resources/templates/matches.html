@@ -14,7 +14,7 @@
       <!--  <h3 th:text="${match.teams[0].name} + ' - ' + ${match.teams[1].name}"></h3>-->
         <h4 th:text="${match.result}"></h4>
         <h4 th:text="${match.matchDate}"></h4>
-        <a th:href="@{/match/{id}(id=${match.id})}">Подробнее</a>
+        <a th:href="@{/match/{id}(id=${match.id})}">Details</a>
     </tr>
     <br>
 </ul>

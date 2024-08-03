@@ -11,7 +11,7 @@
 <ul>
     <li th:each="news : ${news}">
         <h3 th:text="${news.text}"></h3>
-        <a th:href="@{/singlenews/{id}(id=${news.id})}">Подробнее</a>
+        <a th:href="@{/singlenews/{id}(id=${news.id})}">Details</a>
     </li>
     <br>
 </ul>

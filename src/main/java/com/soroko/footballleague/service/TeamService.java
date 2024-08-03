@@ -17,17 +17,17 @@ public class TeamService {
     final TeamRepository teamRepository;
 
     public List<Team> getAllTeams() {
-        Team team01 = new Team();
+     /*   Team team01 = new Team();
         team01.setId(1);
         team01.setName("Liverpool");
         Team team02 = new Team();
         team02.setId(2);
-        team02.setName("Everton");
+        team02.setName("Everton");*/
         List<Team> teams = teamRepository.findAll();
-        if (teams.isEmpty()) {
+     /*   if (teams.isEmpty()) {
             teams.add(team01);
             teams.add(team02);
-        }
+        }*/
         return teams;
     }
 

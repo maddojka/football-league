@@ -11,7 +11,7 @@
 <ul>
     <li th:each="player : ${players}">
         <h3 th:text="${player.name}"></h3>
-        <a th:href="@{/player/{id}(id=${player.id})}">Подробнее</a>
+        <a th:href="@{/player/{id}(id=${player.id})}">Details</a>
     </li>
     <br>
 </ul>

@@ -8,12 +8,12 @@
 </head>
 <body>
 
-<span th:if="${error}">Пользователь уже существует</span>
+<span th:if="${error}">User already exists</span>
 
 <form method="POST" th:action="@{registration}" th:object="${applicationUser}">
-    <input type="text" placeholder="Введите логин" th:field="*{username}">
-    <input type="password" placeholder="Введите пароль" th:field="*{password}">
-    <input type="submit" value="Создать аккаунт">
+    <input type="text" placeholder="Enter login" th:field="*{username}">
+    <input type="password" placeholder="Enter password" th:field="*{password}">
+    <input type="submit" value="Sign up">
 </form>
 
 </body>

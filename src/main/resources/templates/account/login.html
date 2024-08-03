@@ -7,12 +7,12 @@
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<span th:if="${param.failed}">Ошибка авторизации</span>
+<span th:if="${param.failed}">Authorization error</span>
 
 <form method="POST" th:action="@{/login}">
-    <input type="text" placeholder="Введите логин" name="application_user_username">
-    <input type="password" placeholder="Введите пароль" name="application_user_password">
-    <input type="submit" value="Войти">
+    <input type="text" placeholder="Enter login" name="application_user_username">
+    <input type="password" placeholder="Enter password" name="application_user_password">
+    <input type="submit" value="Sign in">
 </form>
 </br>
 <li><a href="home.html" th:href="@{/}">Homepage</a></li>

@@ -14,7 +14,7 @@
     </li>-->
     <ol th:each="team : ${teams}">
         <h3 th:text="${team.name}"></h3>
-        <a th:href="@{/team/{id}(id=${team.id})}">Подробнее</a>
+        <a th:href="@{/team/{id}(id=${team.id})}">Details</a>
     </ol>
     <br>
     <li><a href="regteam.html" th:href="@{/regteam}">Register team</a></li>
