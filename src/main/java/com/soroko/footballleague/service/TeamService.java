@@ -47,5 +47,6 @@ public class TeamService {
         teamToBeUpdated.setName(updatedTeam.getName());
         teamToBeUpdated.setCity(updatedTeam.getCity());
         teamToBeUpdated.setStadium(updatedTeam.getStadium());
+        teamRepository.save(teamToBeUpdated);
     }
 }

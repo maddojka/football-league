@@ -49,21 +49,21 @@ public class PlayerController {
         return "redirect:/players";
     }
 
-    @GetMapping("/editplayer/{id}")
-    public String editPlayer(Model model, @PathVariable(name = "id") Long id) {
-        model.addAttribute("player", playerService.getPlayerById(id));
-        return "/players";
+    @GetMapping("/player/{id}/editplayer")
+    public String editPlayer(Model model, @PathVariable long id) {
+        model.addAttribute("editPlayer", playerService.getPlayerById(id));
+        return "editplayer";
     }
 
-    @PatchMapping("/editplayer/{id}")
+    @PostMapping("/player/{id}")
     public String updateTeam(@ModelAttribute("player") @Valid Player player,
                              @PathVariable("id") long id, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Something went wrong while updating player {}", player);
-            return "regplayer";
+            return "editplayer";
         }
         playerService.updatePlayer(id, player);
         log.info("Updating player{}", player);
-        return "redirect:/player";
+        return "redirect:/players";
     }
 }

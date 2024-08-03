@@ -52,18 +52,18 @@ public class NewsController {
         return "redirect:/news";
     }
 
-    @GetMapping("/editnews/{id}")
-    public String editNews(Model model, @PathVariable(name = "id") int id) {
-        model.addAttribute("singlenews", newsService.getNewsById(id));
-        return "/news";
+    @GetMapping("singlenews/{id}/editnews")
+    public String editNews(Model model, @PathVariable int id) {
+        model.addAttribute("editNews", newsService.getNewsById(id));
+        return "editnews";
     }
 
-    @PatchMapping("/editnews/{id}")
+    @PostMapping("singlenews/{id}")
     public String updateNews(@ModelAttribute("singlenews") @Valid News news,
-                              @PathVariable("id") int id, BindingResult bindingResult) {
+                              @PathVariable int id, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Something went wrong while updating news {}", news);
-            return "addnews";
+            return "editnews";
         }
         newsService.updateNews(id, news);
         log.info("Updating news {}", news);

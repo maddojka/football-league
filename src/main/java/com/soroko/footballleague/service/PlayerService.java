@@ -52,5 +52,6 @@ public class PlayerService {
         playerToBeUpdated.setName(updatedPlayer.getName());
         playerToBeUpdated.setSurname(updatedPlayer.getSurname());
         playerToBeUpdated.setPosition(updatedPlayer.getPosition());
+        playerRepository.save(playerToBeUpdated);
     }
 }

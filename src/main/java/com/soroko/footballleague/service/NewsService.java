@@ -48,8 +48,11 @@ public class NewsService {
 
     public void updateNews(int id, News updatedNews) {
         News newsToBeUpdated = getNewsById(id);
+        newsToBeUpdated.setId(updatedNews.getId());
         newsToBeUpdated.setText(updatedNews.getText());
         newsToBeUpdated.setCreatedAt(updatedNews.getCreatedAt());
+        newsRepository.save(newsToBeUpdated);
+
     }
 
 

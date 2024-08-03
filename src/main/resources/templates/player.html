@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Player</title>
+    <title th:text="${player_info.name} + ' ' + ${(player_info.surname)}"></titleth:text></title>
+<!--    <title>Player</title>-->
     <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
          title="jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
 <h1>Player info</h1>
-<h3 th:text="${player_info.name.concat(player_info.surname)}"></h3>
+<h3 th:text="${player_info.name} + ' ' + ${(player_info.surname)}"></h3>
 <h3 th:text="${player_info.position}"></h3>
 <li><a href="home.html" th:href="@{/}">Homepage</a></li>
-<br>
+</br>
+<a th:href="@{/player/{id}/editplayer(id=${player_info.id})}">Edit player data</a>
+
 </body>
 <footer>
     <div th:insert="~{footer :: copy}"></div>

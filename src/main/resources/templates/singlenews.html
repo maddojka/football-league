@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>"${news_info.name}"</title>
+    <title>News</title>
+   <!--  <title th:text="${news_info.name}"></title>-->
     <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
          title="jv" width="200" height="200"/>&nbsp;
@@ -15,7 +16,8 @@
 <h3>Date of creation</h3>
 <h3 th:text="${news_info.createdAt}"></h3>
 <br>
-<li><a href="editnews.html" th:href="@{{id}/editnews}">Edit news data</a></li>
+<!--<li><a href="editnews.html" th:href="@{{id}/editnews}">Edit news data</a></li>-->
+<a th:href="@{/singlenews/{id}/editnews(id=${news_info.id})}">Edit news data</a>
 </body>
 <br>
 <ol>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>"${match_info.name}"</title>
+    <title>Match info</title>
     <link rel="stylesheet" th:href="@{/styles.css}"/>
     <img th:src="@{/images/football-league.jpg}"
          title="jv" width="200" height="200"/>&nbsp;
@@ -15,7 +15,8 @@
 <h3>Date of the match</h3>
 <h3 th:text="${match_info.matchDate}"></h3>
 <br>
-<li><a href="editresult.html" th:href="@{{id}/editresult}">Edit match data</a></li>
+<!--<li><a href="editresult.html" th:href="@{{id}/editresult}">Edit match data</a></li>-->
+<a th:href="@{/match/{id}/editresult(id=${match_info.id})}">Edit match data</a>
 </body>
 <br>
 <ol>

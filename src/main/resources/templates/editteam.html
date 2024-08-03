@@ -8,7 +8,7 @@
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="PATCH" th:action="@{/editteam}" th:object="${team}">
+<form method="POST" th:action="@{/team/{id}(id=${editTeam.getId()})}" th:object="${editTeam}">
     <!--id=${team.getId()})-->
     <h3>Enter team data:</h3>
     <label for="name">Team name: </label>

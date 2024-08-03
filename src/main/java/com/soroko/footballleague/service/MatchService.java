@@ -67,6 +67,8 @@ public class MatchService {
         Match matchToBeUpdated = getMatchById(id);
         matchToBeUpdated.setMatchDate(updatedMatch.getMatchDate());
         matchToBeUpdated.setResult(updatedMatch.getResult());
+        matchToBeUpdated.setTeams(updatedMatch.getTeams());
+        matchRepository.save(matchToBeUpdated);
     }
 
     public void parseResult(String result, List<Team> teams, List<TeamDTO> teamDTOs) {

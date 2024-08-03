@@ -72,18 +72,18 @@ public class MatchController {
         return "redirect:/matches";
     }
 
-    @GetMapping("/editresult/{id}")
-    public String editMatch(Model model, @PathVariable(name = "id") int id) {
-        model.addAttribute("match", matchService.getMatchById(id));
-        return "/matches";
+    @GetMapping("match/{id}/editresult")
+    public String editMatch(Model model, @PathVariable int id) {
+        model.addAttribute("editResult", matchService.getMatchById(id));
+        return "editresult";
     }
 
-    @PatchMapping("/editresult/{id}")
+    @PostMapping("match/{id}")
     public String updateMatch(@ModelAttribute("match") @Valid Match match,
-                              @PathVariable("id") int id, BindingResult bindingResult) {
+                              @PathVariable int id, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
             log.error("Something went wrong while updating match result {}", match);
-            return "result";
+            return "editresult";
         }
         matchService.updateMatch(id, match);
         log.info("Updating match {}", match);

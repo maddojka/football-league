@@ -8,7 +8,7 @@
          title = "jv" width="200" height="200"/>&nbsp;
 </head>
 <body>
-<form method="PATCH" th:action="@{/editresult}" th:object="${match}">
+<form method="POST" th:action="@{/match/{id}(id=${editResult.getId()})}" th:object="${editResult}">
     <h3>Enter result data:</h3>
     <label for="result">Result: </label>
     <input type="text" th:field="*{result}"/>
