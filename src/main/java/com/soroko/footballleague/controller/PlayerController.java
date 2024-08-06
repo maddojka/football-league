@@ -1,7 +1,6 @@
 package com.soroko.footballleague.controller;
 
 import com.soroko.footballleague.entity.Player;
-import com.soroko.footballleague.repository.PlayerRepository;
 import com.soroko.footballleague.service.PlayerService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -32,6 +31,8 @@ public class PlayerController {
         model.addAttribute("player_info", player);
         return "player";
     }
+
+
 
     @GetMapping("/regplayer")
     public String showPlayerForm(Player player) {
