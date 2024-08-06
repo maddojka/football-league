@@ -34,13 +34,6 @@ public class MatchController {
         return "match";
     }
 
-   /* @GetMapping("/result")
-    public String showMatches(Match match) {
-        match.getTeams().add(new Team());
-        match.getTeams().add(new Team());
-        return "result";
-    }*/
-
     @GetMapping("/result")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -51,15 +44,6 @@ public class MatchController {
         modelAndView.setViewName("result");
         return modelAndView;
     }
-
-    /*@GetMapping("/result")
-    public String showResultForm(Model model) {
-        Match match = new Match();
-        match.getTeams().add(new Team());
-        match.getTeams().add(new Team());
-        model.addAttribute("result", match);
-        return "result";
-    }*/
 
     @PostMapping("/result")
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
@@ -89,6 +73,4 @@ public class MatchController {
         log.info("Updating match {}", match);
         return "redirect:/matches";
     }
-
-
 }
