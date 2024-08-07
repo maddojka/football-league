@@ -3,6 +3,7 @@ package com.soroko.footballleague.service;
 import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.repository.PlayerRepository;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
@@ -20,11 +21,12 @@ public class PlayerService {
     }
 
     public Player getPlayerById(long id) {
-        return playerRepository.findById(id).orElseThrow();
+        return playerRepository.findById(id).orElseThrow(
+                () -> new MatchException(("No player found with id: " + id), new IllegalArgumentException()));
     }
 
-    public long addPlayer(Player player) {
-        return playerRepository.save(player).getId();
+    public Player addPlayer(Player player) {
+        return playerRepository.save(player);
     }
 
     public void updatePlayer(long id, Player updatedPlayer) {

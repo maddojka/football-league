@@ -24,14 +24,12 @@ public class TeamService {
     }
 
     public Team getTeamById(long id) {
-        Team team01 = new Team();
-        team01.setId(3);
-        team01.setName("Chelsea");
-        return teamRepository.findById(id).orElse(team01);
+        return teamRepository.findById(id).orElseThrow(
+                () -> new MatchException(("No team found with id: " + id), new IllegalArgumentException()));
     }
 
-    public long addTeam(Team team) {
-        return teamRepository.save(team).getId();
+    public Team addTeam(Team team) {
+        return teamRepository.save(team);
     }
 
     public void updateTeam(long id, Team updatedTeam) {

@@ -18,32 +18,16 @@ public class NewsService {
     final NewsRepository newsRepository;
 
     public List<News> getAllNews() {
-        News news01 = new News();
-        news01.setId(1);
-        news01.setCreatedAt(LocalDateTime.now());
-        news01.setText("This is my first news here!");
-        News news02 = new News();
-        news02.setId(2);
-        news02.setCreatedAt(LocalDateTime.now());
-        news02.setText("This is my second news here!");
-        List<News> news = newsRepository.findAll();
-        if (news.isEmpty()) {
-            news.add(news01);
-            news.add(news02);
-        }
-        return news;
+        return newsRepository.findAll();
     }
 
     public News getNewsById(int id) {
-        News news = new News();
-        news.setId(1);
-        news.setCreatedAt(LocalDateTime.now());
-        news.setText("This is my first news here!");
-        return newsRepository.findById(id).orElse(news);
+        return newsRepository.findById(id).orElseThrow(
+                () -> new MatchException(("No news found with id: " + id), new IllegalArgumentException()));
     }
 
-    public long addNews(News news) {
-        return newsRepository.save(news).getId();
+    public News addNews(News news) {
+        return newsRepository.save(news);
     }
 
     public void updateNews(int id, News updatedNews) {

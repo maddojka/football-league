@@ -19,21 +19,17 @@ public class MatchService {
     final List<TeamDto> teamDTOs;
 
     public List<Match> getAllMatches() {
-        List<Match> matches = matchRepository.findAll();
-        return matches;
+        return matchRepository.findAll();
     }
 
     public Match getMatchById(int id) {
-        Match match = new Match();
-        match.setId(1);
-        match.setMatchDate(LocalDateTime.now());
-        match.setResult("2-1");
-        return matchRepository.findById(id).orElse(match);
+        return matchRepository.findById(id).orElseThrow(
+                () -> new MatchException(("No match found with id: " + id), new IllegalArgumentException()));
     }
 
-    public long addMatch(Match match) {
+    public Match addMatch(Match match) {
         String result = match.getResult();
-        return matchRepository.save(match).getId();
+        return matchRepository.save(match);
     }
 
     public void updateMatch(int id, Match updatedMatch) {

@@ -3,9 +3,7 @@ package com.soroko.footballleague.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +15,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "match")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Match {
@@ -38,10 +38,8 @@ public class Match {
 
     @NotNull
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
-    /*@JoinTable(name = "tb_match_teams",
-            joinColumns = @JoinColumn(name = "match_id"),
-            inverseJoinColumns = @JoinColumn(name = "team_id"))*/
-            List<Team> teams = new ArrayList<>();
+    List<Team> teams = new ArrayList<>();
+
 
 }
 
