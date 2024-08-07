@@ -1,7 +1,7 @@
 package com.soroko.footballleague.service;
 
-import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.News;
+import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.repository.NewsRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -35,8 +36,14 @@ class NewsServiceTest {
     }
 
     @Test
-    @Disabled
     void getNewsById() {
+        News news = new News(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                "Praesent ut iaculis ipsum. Vestibulum vitae gravida felis. " +
+                "In et elit non elit scelerisque suscipit. " +
+                "Quisque id volutpat ligula. Nullam lectus.", LocalDateTime.now());
+        when(newsRepository.findById(1)).thenReturn(Optional.of(news));
+        News found = underTest.getNewsById(1);
+        assertThat(found).isEqualTo(news);
     }
 
     @Test
@@ -51,7 +58,14 @@ class NewsServiceTest {
     }
 
     @Test
-    @Disabled
     void updateNews() {
+        News news = new News(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                "Praesent ut iaculis ipsum. Vestibulum vitae gravida felis. " +
+                "In et elit non elit scelerisque suscipit. " +
+                "Quisque id volutpat ligula. Nullam lectus.", LocalDateTime.now());
+        when(newsRepository.findById(1)).thenReturn(Optional.of(news));
+        when(newsRepository.save(any(News.class))).thenReturn(news);
+        News updatedNews = underTest.updateNews(1, news);
+        assertThat(updatedNews).isNotNull();
     }
 }

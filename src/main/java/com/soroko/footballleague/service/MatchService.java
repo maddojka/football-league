@@ -32,11 +32,11 @@ public class MatchService {
         return matchRepository.save(match);
     }
 
-    public void updateMatch(int id, Match updatedMatch) {
+    public Match updateMatch(int id, Match updatedMatch) {
         Match matchToBeUpdated = getMatchById(id);
         matchToBeUpdated.setMatchDate(updatedMatch.getMatchDate());
         matchToBeUpdated.setResult(updatedMatch.getResult());
         matchToBeUpdated.setTeams(updatedMatch.getTeams());
-        matchRepository.save(matchToBeUpdated);
+        return matchRepository.save(matchToBeUpdated);
     }
 }

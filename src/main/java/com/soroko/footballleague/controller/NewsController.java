@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NewsController {
-
     final NewsService newsService;
+
+
 
     @GetMapping("/news")
     public String getAllNews(Model model) {

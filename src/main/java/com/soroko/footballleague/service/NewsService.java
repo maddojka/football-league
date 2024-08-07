@@ -30,12 +30,12 @@ public class NewsService {
         return newsRepository.save(news);
     }
 
-    public void updateNews(int id, News updatedNews) {
+    public News updateNews(int id, News updatedNews) {
         News newsToBeUpdated = getNewsById(id);
         newsToBeUpdated.setId(updatedNews.getId());
         newsToBeUpdated.setText(updatedNews.getText());
         newsToBeUpdated.setCreatedAt(updatedNews.getCreatedAt());
-        newsRepository.save(newsToBeUpdated);
+        return newsRepository.save(newsToBeUpdated);
 
     }
 

@@ -1,7 +1,7 @@
 package com.soroko.footballleague.service;
 
-import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.Player;
+import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.PlayerRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -34,8 +35,11 @@ class PlayerServiceTest {
     }
 
     @Test
-    @Disabled
     void getPlayerById() {
+        Player player = new Player(1, "Ivan", "Ivanov", Player.Position.DEFENDER);
+        when(playerRepository.findById(1L)).thenReturn(Optional.of(player));
+        Player found = underTest.getPlayerById(1);
+        assertThat(found).isEqualTo(player);
     }
 
     @Test
@@ -47,7 +51,11 @@ class PlayerServiceTest {
     }
 
     @Test
-    @Disabled
     void updatePlayer() {
+        Player player = new Player(1, "Ivan", "Ivanov", Player.Position.DEFENDER);
+        when(playerRepository.findById(1L)).thenReturn(Optional.of(player));
+        when(playerRepository.save(any(Player.class))).thenReturn(player);
+        Player updatedPlayer = underTest.updatePlayer(1L, player);
+        assertThat(updatedPlayer).isNotNull();
     }
 }

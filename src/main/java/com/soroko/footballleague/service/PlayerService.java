@@ -29,11 +29,11 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public void updatePlayer(long id, Player updatedPlayer) {
+    public Player updatePlayer(long id, Player updatedPlayer) {
         Player playerToBeUpdated = getPlayerById(id);
         playerToBeUpdated.setName(updatedPlayer.getName());
         playerToBeUpdated.setSurname(updatedPlayer.getSurname());
         playerToBeUpdated.setPosition(updatedPlayer.getPosition());
-        playerRepository.save(playerToBeUpdated);
+        return playerRepository.save(playerToBeUpdated);
     }
 }
