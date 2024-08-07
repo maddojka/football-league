@@ -16,7 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class FileDownloadController {
-     
+
+    /**
+     * Request to download file
+     * @param fileCode - code of the file
+     * @return - returns the status of downloading
+     */
     @GetMapping("/downloadFile/{fileCode}")
     public ResponseEntity<?> downloadFile(@PathVariable("fileCode") String fileCode) {
         FileDownloadService downloadService = new FileDownloadService();

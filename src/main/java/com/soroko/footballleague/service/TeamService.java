@@ -1,7 +1,7 @@
 package com.soroko.footballleague.service;
 
 
-import com.soroko.footballleague.dto.TeamDto;
+import com.soroko.footballleague.dto.TeamDTO;
 import com.soroko.footballleague.entity.Team;
 import com.soroko.footballleague.repository.TeamRepository;
 import lombok.AccessLevel;
@@ -16,7 +16,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TeamService {
     final TeamRepository teamRepository;
-    TeamDto teamDTO;
+    TeamDTO teamDTO;
 
     public List<Team> getAllTeams() {
         List<Team> teams = teamRepository.findAll();

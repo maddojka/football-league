@@ -19,12 +19,18 @@ import org.springframework.web.bind.annotation.*;
 public class TeamContoller {
     final TeamService teamService;
 
+    /**
+     * Show all available teams
+     */
     @GetMapping("/teams")
     public String getAllTeams(Model model) {
         model.addAttribute("teams", teamService.getAllTeams());
         return "teams";
     }
 
+    /**
+     * Return team by endpoint id
+     */
     @GetMapping("/team/{id}")
     public String getTeamById(@PathVariable long id, Model model) {
         Team team = teamService.getTeamById(id);
@@ -32,11 +38,17 @@ public class TeamContoller {
         return "team";
     }
 
+    /**
+     * Get register team form
+     */
     @GetMapping("/regteam")
     public String showTeamForm(Team team) {
         return "regteam";
     }
 
+    /**
+     * Adding new team to database
+     */
     @PostMapping("/regteam")
     public String addTeam(@Valid Team team, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -47,14 +59,19 @@ public class TeamContoller {
         log.info("Adding team {}", team);
         return "redirect:/teams";
     }
-//    /form?id=
 
+    /**
+     * Get edit form of the team by id
+     */
     @GetMapping("/team/{id}/editteam")
     public String editTeam(Model model, @PathVariable long id) {
         model.addAttribute("editTeam", teamService.getTeamById(id));
         return "editteam";
     }
 
+    /**
+     * Edit data of existing team by id
+     */
     @PostMapping("/team/{id}")
     public String updateTeam(@ModelAttribute("team") @Valid Team team,
                              @PathVariable long id, BindingResult bindingResult) {
@@ -66,5 +83,4 @@ public class TeamContoller {
         log.info("Updating team{}", team);
         return "redirect:/teams";
     }
-
 }

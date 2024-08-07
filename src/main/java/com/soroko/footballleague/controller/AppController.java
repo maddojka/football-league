@@ -21,6 +21,9 @@ public class AppController {
         return "deposit";
     }
 
+    /**
+     * Formation of payment information
+     */
     @PostMapping("/deposit")
     public String showCard(@ModelAttribute @Valid Request request,
                                BindingResult bindingResult,

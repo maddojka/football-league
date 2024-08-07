@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class HomeController {
 
+    /**
+     * Start page of the application
+     * @return
+     */
     @GetMapping("/")
     public String home() {
         return "home";

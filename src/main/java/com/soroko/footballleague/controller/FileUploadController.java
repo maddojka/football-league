@@ -14,7 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
  
 @RestController
 public class FileUploadController {
-     
+
+    /**
+     * Request to upload the file
+     * @return returns the status of uploading
+     */
     @PostMapping("/uploadFile")
     public ResponseEntity<FileUploadResponse> uploadFile(
             @RequestParam("file") MultipartFile multipartFile)

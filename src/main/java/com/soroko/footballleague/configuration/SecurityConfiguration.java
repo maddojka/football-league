@@ -40,12 +40,12 @@ public class SecurityConfiguration {
      * Запросы проходят фильтр, где происходит обработка токена,
      * который присылает клиент
      */
-//    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfiguration(UserDetailService userDetailService,
                                  JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.userDetailService = userDetailService;
-//        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     /**

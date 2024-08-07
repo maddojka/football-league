@@ -11,8 +11,8 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TeamDto {
+public class PlayerDTO {
     String name;
-    String city;
-    String stadium;
+    String surname;
+    String position;
 }

@@ -11,7 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
@@ -21,12 +24,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class MatchController {
     final MatchService matchService;
 
+    /**
+     * Show all available matches
+     */
     @GetMapping("/matches")
     public String getAllMatches(Model model) {
         model.addAttribute("matches", matchService.getAllMatches());
         return "matches";
     }
 
+    /**
+     * Return match by endpoint id
+     */
     @GetMapping("match/{id}")
     public String getMatchById(@PathVariable int id, Model model) {
         Match match = matchService.getMatchById(id);
@@ -34,6 +43,9 @@ public class MatchController {
         return "match";
     }
 
+    /**
+     * Get register match form
+     */
     @GetMapping("/result")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -45,6 +57,9 @@ public class MatchController {
         return modelAndView;
     }
 
+    /**
+     * Adding new match to database
+     */
     @PostMapping("/result")
     public String addMatch(@Valid Match match, BindingResult bindingResult) {
         if (bindingResult.hasErrors())  {
@@ -56,12 +71,18 @@ public class MatchController {
         return "redirect:/matches";
     }
 
+    /**
+     * Get edit form of the match by id
+     */
     @GetMapping("match/{id}/editresult")
     public String editMatch(Model model, @PathVariable int id) {
         model.addAttribute("editResult", matchService.getMatchById(id));
         return "editresult";
     }
 
+    /**
+     * Edit data of existing match by id
+     */
     @PostMapping("match/{id}")
     public String updateMatch(@ModelAttribute("match") @Valid Match match,
                               @PathVariable int id, BindingResult bindingResult) {

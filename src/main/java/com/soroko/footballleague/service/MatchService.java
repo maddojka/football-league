@@ -1,6 +1,6 @@
 package com.soroko.footballleague.service;
 
-import com.soroko.footballleague.dto.TeamDto;
+import com.soroko.footballleague.dto.TeamDTO;
 import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.repository.MatchRepository;
 import lombok.AccessLevel;
@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,7 +15,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MatchService {
     final MatchRepository matchRepository;
-    final List<TeamDto> teamDTOs;
+    final List<TeamDTO> teamDTOS;
 
     public List<Match> getAllMatches() {
         return matchRepository.findAll();

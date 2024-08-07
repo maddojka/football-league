@@ -16,9 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/account")
 @RequiredArgsConstructor
 public class AccountController {
+
     private final AccountService accountService;
-
-
 
     @GetMapping("/registration")
     public String registration(ApplicationUser applicationUser) {

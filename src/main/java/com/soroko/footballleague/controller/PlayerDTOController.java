@@ -1,6 +1,6 @@
 package com.soroko.footballleague.controller;
 
-import com.soroko.footballleague.dto.PlayerDto;
+import com.soroko.footballleague.dto.PlayerDTO;
 import com.soroko.footballleague.entity.Player;
 import com.soroko.footballleague.service.PlayerService;
 import lombok.AccessLevel;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PlayerDtoController {
+public class PlayerDTOController {
     final PlayerService playerService;
 
     @GetMapping("playerstats/{id}")
-    public PlayerDto getPlayerDTOById(@RequestParam long id) {
+    public PlayerDTO getPlayerDTOById(@RequestParam long id) {
         Player player = playerService.getPlayerById(id);
-        PlayerDto playerDTO = new PlayerDto();
+        PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setName(player.getName());
         playerDTO.setSurname(player.getSurname());
         playerDTO.setPosition(player.getPosition().toString());
