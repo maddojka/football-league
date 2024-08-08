@@ -1,6 +1,5 @@
 package com.soroko.footballleague.service;
 
-import com.soroko.footballleague.entity.Match;
 import com.soroko.footballleague.entity.News;
 import com.soroko.footballleague.repository.NewsRepository;
 import lombok.AccessLevel;
@@ -8,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service

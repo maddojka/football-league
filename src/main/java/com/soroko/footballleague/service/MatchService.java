@@ -15,7 +15,6 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MatchService {
     final MatchRepository matchRepository;
-    final List<TeamDTO> teamDTOS;
 
     public List<Match> getAllMatches() {
         return matchRepository.findAll();
