@@ -20,6 +20,6 @@ public class RabbitProducer {
 
     public void send(HolderDTO holderDTO) {
         log.info(String.format("Json message sent -> %s", holderDTO.toString()));
-        amqpTemplate.convertAndSend("payment_routing_key", holderDTO);
+        amqpTemplate.convertAndSend("payment_routing_exchange","payment_routing_key", holderDTO);
     }
 }
